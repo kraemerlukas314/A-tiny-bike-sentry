@@ -1003,105 +1003,6 @@
 				)
 			)
 		)
-		(symbol "Symbols:Jumper"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Jumper_0_1"
-				(rectangle
-					(start 0 2.54)
-					(end 2.54 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Jumper_1_1"
-				(pin input line
-					(at -2.54 1.27 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -2.54 0 0)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Symbols:Piezo"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1445,22 +1346,10 @@
 		(uuid "4d602659-f9ae-4ea7-a0a2-ef864379e91f")
 	)
 	(junction
-		(at 170.18 91.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6d434583-62a9-47b5-9434-2af0ef4d283e")
-	)
-	(junction
 		(at 167.64 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7eee9f1b-0022-4de4-bfff-8fef3f58b5dd")
-	)
-	(junction
-		(at 146.05 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b0be6637-2cd4-4c71-ab32-4ba1dbb9cc00")
 	)
 	(junction
 		(at 147.32 81.28)
@@ -1480,7 +1369,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 97.79) (xy 146.05 100.33)
+			(xy 146.05 97.79) (xy 146.05 102.87)
 		)
 		(stroke
 			(width 0)
@@ -1517,26 +1406,6 @@
 			(type default)
 		)
 		(uuid "286c72cf-0148-4e6e-8e89-a9ed7db414c6")
-	)
-	(wire
-		(pts
-			(xy 146.05 101.6) (xy 146.05 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3fcd34f7-f7ae-44b9-9443-0300fba64f88")
-	)
-	(wire
-		(pts
-			(xy 170.18 93.98) (xy 170.18 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "45ee0242-5983-4e66-9b8d-d66041fc858c")
 	)
 	(wire
 		(pts
@@ -1590,7 +1459,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 91.44) (xy 170.18 91.44)
+			(xy 147.32 91.44) (xy 171.45 91.44)
 		)
 		(stroke
 			(width 0)
@@ -1617,16 +1486,6 @@
 			(type default)
 		)
 		(uuid "58a586a9-4f50-4030-950a-01f209477894")
-	)
-	(wire
-		(pts
-			(xy 139.7 100.33) (xy 140.97 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "59261a57-81a9-44b5-b5db-829402683738")
 	)
 	(wire
 		(pts
@@ -1780,16 +1639,6 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 102.87) (xy 142.24 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb32455d-5c9d-4dc4-8558-8ea21ebb3651")
-	)
-	(wire
-		(pts
 			(xy 156.21 127) (xy 158.75 127)
 		)
 		(stroke
@@ -1870,16 +1719,6 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 100.33) (xy 140.97 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e32335e5-0b23-41ed-ab7e-0761b979f5c3")
-	)
-	(wire
-		(pts
 			(xy 167.64 111.76) (xy 167.64 107.95)
 		)
 		(stroke
@@ -1887,26 +1726,6 @@
 			(type default)
 		)
 		(uuid "e7bb4fa3-3ff5-45ec-9d06-7aa483417266")
-	)
-	(wire
-		(pts
-			(xy 142.24 101.6) (xy 146.05 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e8b7955f-3b1c-401a-b799-6f5086079b8f")
-	)
-	(wire
-		(pts
-			(xy 168.91 93.98) (xy 170.18 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ed04528b-ce9b-41f4-83fe-1b2b577fb24d")
 	)
 	(wire
 		(pts
@@ -1930,16 +1749,6 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 91.44) (xy 171.45 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f5f74adf-f85e-4ad4-87e6-8f552b99c19d")
-	)
-	(wire
-		(pts
 			(xy 154.94 83.82) (xy 154.94 100.33)
 		)
 		(stroke
@@ -1957,121 +1766,6 @@
 			(type default)
 		)
 		(uuid "fa1eb2db-a284-431b-a283-258ea2d0832d")
-	)
-	(global_label "POL"
-		(shape input)
-		(at 168.91 93.98 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "317d05dc-7437-41f4-a5ef-cb1a60e5ad6d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 162.2962 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "POL"
-		(shape input)
-		(at 139.7 100.33 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "78a21905-be7b-4bdf-bf5d-0f4e260113fb")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.0862 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Symbols:Jumper")
-		(at 148.59 101.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "063e66c8-73eb-4097-8329-d1f444842fc3")
-		(property "Reference" "U4"
-			(at 152.4 100.3299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "~"
-			(at 152.4 102.235 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Library:Jumper"
-			(at 148.59 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 148.59 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 148.59 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f36edd05-324e-4b75-9fd7-4c2410806ac8")
-		)
-		(pin "1"
-			(uuid "ef3d89f6-f763-4c49-9aee-912cbd5c25ce")
-		)
-		(instances
-			(project "pcb"
-				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
-					(reference "U4")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(symbol
 		(lib_id "Symbols:Arduino_connector")
@@ -2153,77 +1847,6 @@
 			(project "pcb"
 				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
 					(reference "U2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Symbols:Jumper")
-		(at 140.97 105.41 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "152fcbba-00a8-457f-975f-cce99f5d2e9c")
-		(property "Reference" "U5"
-			(at 142.2401 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "~"
-			(at 144.78 106.68 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Library:Jumper"
-			(at 140.97 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 140.97 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 140.97 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "5741fc6e-7f40-4df8-854c-377aa4a5733b")
-		)
-		(pin "1"
-			(uuid "7441e171-a24c-4d37-a49f-8eb452dad5b6")
-		)
-		(instances
-			(project "pcb"
-				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
-					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -2748,7 +2371,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Library:Piezo"
 			(at 173.99 102.87 0)
 			(effects
 				(font
@@ -3084,7 +2707,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
 			(at 154.94 60.96 0)
 			(effects
 				(font
@@ -3154,7 +2777,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Buzzer_Beeper:Buzzer_15x7.5RM7.6"
 			(at 160.655 121.92 90)
 			(effects
 				(font
