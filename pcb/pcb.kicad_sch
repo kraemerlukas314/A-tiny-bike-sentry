@@ -2903,7 +2903,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1M"
+		(property "Value" "10k"
 			(at 164.5938 105.6064 90)
 			(effects
 				(font
