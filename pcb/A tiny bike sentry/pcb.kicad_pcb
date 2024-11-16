@@ -490,7 +490,7 @@
 		(descr "Generic 6mm SW tactile push button")
 		(tags "tact sw push 6mm")
 		(property "Reference" "SW1"
-			(at 3.25 -2 360)
+			(at 3.25 -2 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "15051728-1be2-44bd-9b85-76b6efca1838")
@@ -502,7 +502,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 3.75 6.7 360)
+			(at 3.75 6.7 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bd624d88-2e1b-46e0-9dd7-bf239bfd02f7")
@@ -775,7 +775,7 @@
 			(uuid "83960448-28d7-471c-9565-20dd43ae8bae")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3.25 2.25 360)
+			(at 3.25 2.25 0)
 			(layer "F.Fab")
 			(uuid "1b8b2136-8410-4e45-93f5-9117804b06fa")
 			(effects
@@ -1466,7 +1466,7 @@
 		(descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
 		(tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
 		(property "Reference" "U1"
-			(at 3.81 -2.33 270)
+			(at 3.81 -2.33 -90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "0ec8597e-925d-4282-8d02-601a5d8d90a7")
@@ -1478,7 +1478,7 @@
 			)
 		)
 		(property "Value" "ATtiny85-20P"
-			(at 3.81 9.95 270)
+			(at 3.81 9.95 -90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "131b9f7c-894a-4620-985d-9a35c51f9381")
@@ -1682,7 +1682,7 @@
 			(uuid "c3ad87a2-c0b1-4ec6-acdb-824d42bb59af")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3.81 3.81 270)
+			(at 3.81 3.81 -90)
 			(layer "F.Fab")
 			(uuid "0eaebc89-4a86-4a85-8028-627bca9349bf")
 			(effects
