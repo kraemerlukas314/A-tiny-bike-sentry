@@ -3,17 +3,19 @@
 #define PIN_PIEZO 3
 #define PIN_BUZZER 4
 
-#define THRESHOLD_PIEZO 10
+#define THRESHOLD_PIEZO 30
 #define DELAY_BUTTON_DEBOUNCE_MS 50
 
 // after piezo detects movement, wait for DELAY_PIEZO_MOVED_MS and check if it is actually a button press
-#define DELAY_PIEZO_MOVED_MS 500 
+#define DELAY_PIEZO_MOVED_MS 500
 enum State {
   DEEP_SLEEP,
   SENTRY,
   ATTENTION,
   ALARM
 };
+
+unsigned long lastButtonPressTime = 0;
 
 State state = DEEP_SLEEP;
 
@@ -27,11 +29,13 @@ void setup() {
 void loop() {
   switch (state) {
     case DEEP_SLEEP:
-      if (button_pressed()) state = SENTRY;
       digitalWrite(PIN_LED, LOW);
+      if (button_pressed()) {
+        state = SENTRY;
+        toggle(PIN_LED, 5, 100);
+      }
       break;
     case SENTRY:
-      analogWrite(PIN_LED, 10);
       if (piezo_moved()) state = ATTENTION;
       if (button_pressed()) state = DEEP_SLEEP;
       break;
@@ -70,5 +74,25 @@ bool button_pressed() {
 }
 
 bool piezo_moved() {
-  return analogRead(PIN_PIEZO) > THRESHOLD_PIEZO;
+  if (analogRead(PIN_PIEZO) <= THRESHOLD_PIEZO) return false;
+
+  // wait for potential button press
+  long long start_time = millis();
+  while (millis() - start_time < 200) {
+    if (digitalRead(PIN_BUTTON)) {
+      while (digitalRead(PIN_BUTTON));
+      delay(50);
+      return false;
+    }
+  }
+  return true;
+}
+
+void toggle(byte pin, int iterations, int t) {
+  for (int i = 0; i < iterations; ++i) {
+    digitalWrite(pin, HIGH);
+    delay(t);
+    digitalWrite(pin, LOW);
+    delay(t);
+  }
 }
