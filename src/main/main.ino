@@ -5,6 +5,7 @@
 
 #define THRESHOLD_PIEZO 30
 #define DELAY_BUTTON_DEBOUNCE_MS 50
+#define ALARM_TOGGLE_FREQ 20
 
 // after piezo detects movement, wait for DELAY_PIEZO_MOVED_MS and check if it is actually a button press
 #define DELAY_PIEZO_MOVED_MS 500
@@ -15,7 +16,8 @@ enum State {
   ALARM
 };
 
-unsigned long lastButtonPressTime = 0;
+long long last_led_toggle = 0;
+bool led_state = true;
 
 State state = DEEP_SLEEP;
 
@@ -36,41 +38,30 @@ void loop() {
       }
       break;
     case SENTRY:
-      if (piezo_moved()) state = ATTENTION;
       if (button_pressed()) state = DEEP_SLEEP;
+      if (piezo_moved()) state = ATTENTION;
       break;
     case ATTENTION:
-      digitalWrite(PIN_LED, HIGH);
+      analogWrite(PIN_LED, 10);
       if (button_pressed()) state = DEEP_SLEEP;
+      if (piezo_moved()) state = ALARM;
       break;
     case ALARM:
+      if (button_pressed()) state = DEEP_SLEEP;
+      if (millis() - last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
+        last_led_toggle = millis();
+        led_state = !led_state;
+        digitalWrite(PIN_LED, led_state);
+      }
       break;
   }
 }
 
 bool button_pressed() {
-  static bool lastButtonState = LOW;
-  static unsigned long lastDebounceTime = 0;
-  static bool buttonState = LOW;
-
-  bool currentReading = digitalRead(PIN_BUTTON);
-
-  if (currentReading != lastButtonState) {
-    lastDebounceTime = millis();
-  }
-
-  if ((millis() - lastDebounceTime) > DELAY_BUTTON_DEBOUNCE_MS) {
-    if (currentReading != buttonState) {
-      buttonState = currentReading;
-      if (buttonState) {
-        lastButtonState = currentReading;
-        return true;
-      }
-    }
-  }
-
-  lastButtonState = currentReading;
-  return false;
+  if (!digitalRead(PIN_BUTTON)) return false;
+  while (digitalRead(PIN_BUTTON));
+  delay(10);
+  return true;
 }
 
 bool piezo_moved() {
