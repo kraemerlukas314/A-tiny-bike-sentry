@@ -1,3 +1,6 @@
+#include <avr/sleep.h>
+#include <avr/interrupt.h>
+
 #define PIN_LED 1
 #define PIN_BUTTON 2
 #define PIN_PIEZO 3
@@ -9,6 +12,15 @@
 
 // after piezo detects movement, wait for DELAY_PIEZO_MOVED_MS and check if it is actually a button press
 #define DELAY_PIEZO_MOVED_MS 500
+
+
+// TODO:
+/**
+ * Interrupt
+ * Deep sleep
+ * Pulsierende Animation im Sentry Mode
+ * Watch Dog
+ */
 enum State {
   DEEP_SLEEP,
   SENTRY,
@@ -26,29 +38,53 @@ void setup() {
   pinMode(PIN_BUZZER, OUTPUT);
   pinMode(PIN_PIEZO, INPUT);
   pinMode(PIN_BUTTON, INPUT);
+
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  sleep_enable();
+
+  // Enable pin change interrupt on PIN_BUTTON
+  GIMSK |= _BV(PCIE); // Enable Pin Change Interrupts
+  PCMSK |= _BV(PIN_BUTTON); // Enable Pin Change Interrupt on PIN_BUTTON
+
+  // Turn off ADC to save power
+  ADCSRA &= ~_BV(ADEN);
+
+  sei(); // Enable global interrupts
+  
+}
+
+// Interrupt handler for rising edge on PIN_BUTTON
+ISR(PCINT0_vect) {
+  state = SENTRY;
 }
 
 void loop() {
   switch (state) {
     case DEEP_SLEEP:
-      digitalWrite(PIN_LED, LOW);
       if (button_pressed()) {
+        toggle(PIN_LED, 5, 70);
         state = SENTRY;
-        toggle(PIN_LED, 5, 100);
       }
       break;
     case SENTRY:
-      if (button_pressed()) state = DEEP_SLEEP;
+      if (button_pressed()) {
+        enter_sleep();
+      }
       if (piezo_moved()) state = ATTENTION;
       break;
     case ATTENTION:
-      analogWrite(PIN_LED, 10);
-      if (button_pressed()) state = DEEP_SLEEP;
+      digitalWrite(PIN_LED, HIGH);
+      if (button_pressed()) {
+        toggle(PIN_LED, 2, 400);
+        state = DEEP_SLEEP;
+      }
       if (piezo_moved()) state = ALARM;
       break;
     case ALARM:
-      if (button_pressed()) state = DEEP_SLEEP;
-      if (millis() - last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
+      if (button_pressed()) {
+        toggle(PIN_LED, 2, 400);
+        state = DEEP_SLEEP;
+      } else if (millis() - last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
         last_led_toggle = millis();
         led_state = !led_state;
         digitalWrite(PIN_LED, led_state);
