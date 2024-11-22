@@ -38,47 +38,33 @@ void setup() {
   pinMode(PIN_BUZZER, OUTPUT);
   pinMode(PIN_PIEZO, INPUT);
   pinMode(PIN_BUTTON, INPUT);
-
-  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
-  sleep_enable();
-
-  // Enable pin change interrupt on PIN_BUTTON
-  GIMSK |= _BV(PCIE); // Enable Pin Change Interrupts
-  PCMSK |= _BV(PIN_BUTTON); // Enable Pin Change Interrupt on PIN_BUTTON
-
-  // Turn off ADC to save power
-  ADCSRA &= ~_BV(ADEN);
-
-  sei(); // Enable global interrupts
-  
-}
-
-// Interrupt handler for rising edge on PIN_BUTTON
-ISR(PCINT0_vect) {
-  state = SENTRY;
 }
 
 void loop() {
   switch (state) {
     case DEEP_SLEEP:
       if (button_pressed()) {
-        toggle(PIN_LED, 5, 70);
+        toggle(PIN_LED, 5, 50);
         state = SENTRY;
       }
       break;
     case SENTRY:
+      analogWrite(PIN_LED, 10);
       if (button_pressed()) {
-        enter_sleep();
+        digitalWrite(PIN_LED, LOW);
+        state = DEEP_SLEEP;
+      } else if (piezo_moved()) {
+        state = ATTENTION;
       }
-      if (piezo_moved()) state = ATTENTION;
       break;
     case ATTENTION:
       digitalWrite(PIN_LED, HIGH);
       if (button_pressed()) {
-        toggle(PIN_LED, 2, 400);
+        toggle(PIN_LED, 2, 300);
         state = DEEP_SLEEP;
+      } else if (piezo_moved()) {
+        state = ALARM;
       }
-      if (piezo_moved()) state = ALARM;
       break;
     case ALARM:
       if (button_pressed()) {
