@@ -36,6 +36,12 @@ void setup() {
   pinMode(PIN_BUZZER, OUTPUT);
   pinMode(PIN_PIEZO, INPUT);
   pinMode(PIN_BUTTON, INPUT);
+  while (1) {
+    digitalWrite(PIN_LED, HIGH);
+    _delay(500);
+    digitalWrite(PIN_LED, LOW);
+    _delay(500);
+  }
 
   // Configure the button pin for pin change interrupt
   configure_button_interrupt();
