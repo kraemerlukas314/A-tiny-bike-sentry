@@ -7,20 +7,12 @@
 #define PIN_BUZZER 4
 
 #define THRESHOLD_PIEZO 30
-#define DELAY_BUTTON_DEBOUNCE_MS 50
+#define DELAY_BUTTON_DEBOUNCE_MS 20
 #define ALARM_TOGGLE_FREQ 20
 
 // after piezo detects movement, wait for DELAY_PIEZO_MOVED_MS and check if it is actually a button press
 #define DELAY_PIEZO_MOVED_MS 500
 
-
-// TODO:
-/**
- * Interrupt
- * Deep sleep
- * Pulsierende Animation im Sentry Mode
- * Watch Dog
- */
 enum State {
   DEEP_SLEEP,
   SENTRY,
@@ -43,10 +35,8 @@ void setup() {
 void loop() {
   switch (state) {
     case DEEP_SLEEP:
-      if (button_pressed()) {
-        toggle(PIN_LED, 5, 50);
-        state = SENTRY;
-      }
+      sleep();
+      state = SENTRY;
       break;
     case SENTRY:
       analogWrite(PIN_LED, 10);
@@ -82,7 +72,7 @@ void loop() {
 bool button_pressed() {
   if (!digitalRead(PIN_BUTTON)) return false;
   while (digitalRead(PIN_BUTTON));
-  delay(10);
+  delay(DELAY_BUTTON_DEBOUNCE_MS);
   return true;
 }
 
@@ -94,7 +84,7 @@ bool piezo_moved() {
   while (millis() - start_time < 200) {
     if (digitalRead(PIN_BUTTON)) {
       while (digitalRead(PIN_BUTTON));
-      delay(50);
+      delay(DELAY_BUTTON_DEBOUNCE_MS);
       return false;
     }
   }
@@ -108,4 +98,32 @@ void toggle(byte pin, int iterations, int t) {
     digitalWrite(pin, LOW);
     delay(t);
   }
+}
+
+void sleep() {
+  while (digitalRead(PIN_BUTTON));
+  delay(DELAY_BUTTON_DEBOUNCE_MS);
+  GIMSK |= _BV(PCIE);                     // Enable Pin Change Interrupts
+  PCMSK |= _BV(PCINT2);                   // Use PB2 as interrupt pin
+  ADCSRA &= ~_BV(ADEN);                   // ADC off
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);    // Set sleep mode
+
+  PORTB &= ~_BV(PORTB2);                  // Ensure no pull-up on PB2 (external pull-down in use)
+
+  sleep_enable();                         // Enable sleep mode
+  sei();                                  // Enable interrupts
+  sleep_cpu();                            // Go to sleep
+
+  cli();                                  // Disable interrupts
+  PCMSK &= ~_BV(PCINT2);                  // Turn off PB2 as interrupt pin
+  sleep_disable();                        // Clear SE bit
+  ADCSRA |= _BV(ADEN);                    // ADC on
+
+  sei();                                  // Enable interrupts
+  while (digitalRead(PIN_BUTTON));
+  delay(DELAY_BUTTON_DEBOUNCE_MS);
+}
+
+ISR(PCINT0_vect) {
+  // This is called when the interrupt occurs, but I don't need to do anything in it
 }
