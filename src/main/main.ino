@@ -1,5 +1,6 @@
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
+#include <avr/wdt.h>
 
 #define PIN_LED 1
 #define PIN_BUTTON 2
@@ -10,10 +11,8 @@
 #define DELAY_BUTTON_DEBOUNCE_MS 50
 #define ALARM_TOGGLE_FREQ 20
 
-// After piezo detects movement, wait for DELAY_PIEZO_MOVED_MS and check if it is actually a button press
 #define DELAY_PIEZO_MOVED_MS 500
-
-#define ATTENTION_COOLDOWN_MS 5000 // Cooldown to go back to sentry with no event in attention
+#define ATTENTION_COOLDOWN_MS 5000
 #define ALARM_COOLDOWN_MS 5000
 
 #define CLOCK_FREQ_MHZ 1
@@ -37,13 +36,24 @@ void setup() {
   pinMode(PIN_BUZZER, OUTPUT);
   pinMode(PIN_PIEZO, INPUT);
   pinMode(PIN_BUTTON, INPUT);
+
+  // Configure the button pin for pin change interrupt
+  configure_button_interrupt();
+
+  // Configure the Watchdog Timer
+  configure_watchdog();
 }
 
 void loop() {
+  // Reset the watchdog timer at the start of each loop iteration
+  wdt_reset();
+
   switch (state) {
     case DEEP_SLEEP:
       digitalWrite(PIN_LED, LOW);
+      disable_watchdog();  // Disable WDT to save power
       sleep();
+      enable_watchdog();   // Re-enable WDT after waking up
       state = SENTRY;
       toggle(PIN_LED, 3, 100);
       break;
@@ -87,6 +97,50 @@ void loop() {
   }
 }
 
+void configure_button_interrupt() {
+  cli();  // Disable interrupts
+  GIMSK |= _BV(PCIE);  // Enable Pin Change Interrupts
+  PCMSK |= _BV(PCINT2);  // Enable interrupt on PIN_BUTTON (PB2)
+  sei();  // Enable interrupts
+}
+
+ISR(PCINT0_vect) {
+  // Handle button press interrupt
+  if (!digitalRead(PIN_BUTTON)) {
+    state = DEEP_SLEEP;  // Enter sleep state on button press
+  }
+}
+
+void configure_watchdog() {
+  cli();  // Disable interrupts
+  wdt_reset();
+  WDTCR = (1 << WDP3) | (1 << WDP0); // Set WDT timeout to 5 seconds
+  WDTCR |= (1 << WDE) | (1 << WDIE); // Enable WDT and WDT interrupt
+  sei();  // Enable interrupts
+}
+
+void enable_watchdog() {
+  cli();
+  wdt_reset();
+  WDTCR = (1 << WDP3) | (1 << WDP0); // Set WDT timeout to 5 seconds
+  WDTCR |= (1 << WDE) | (1 << WDIE); // Enable WDT and WDT interrupt
+  sei();
+}
+
+void disable_watchdog() {
+  cli();
+  wdt_reset();
+  WDTCR &= ~(1 << WDE); // Disable the WDT system reset
+  sei();
+}
+
+ISR(WDT_vect) {
+  // Watchdog timer interrupt: Enter sleep mode
+  state = DEEP_SLEEP;
+  // Re-enable button interrupt in case it was disabled
+  configure_button_interrupt();
+}
+
 bool button_pressed() {
   if (!digitalRead(PIN_BUTTON)) return false;
   while (digitalRead(PIN_BUTTON));
@@ -97,7 +151,6 @@ bool button_pressed() {
 bool piezo_moved() {
   if (analogRead(PIN_PIEZO) <= THRESHOLD_PIEZO) return false;
 
-  // Wait for potential button press
   long start_time = _millis();
   while (_millis() - start_time < DELAY_PIEZO_MOVED_MS) {
     if (digitalRead(PIN_BUTTON)) {
@@ -126,7 +179,6 @@ void sleep() {
   ADCSRA &= ~_BV(ADEN);                   // ADC off
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);    // Set sleep mode
 
-  // Disable Brown-Out Detector
   MCUCR |= (1 << BODS) | (1 << BODSE);
   MCUCR &= ~(1 << BODSE);
 
@@ -145,9 +197,6 @@ void sleep() {
   sei();                                  // Enable interrupts
   while (digitalRead(PIN_BUTTON));
   _delay(DELAY_BUTTON_DEBOUNCE_MS);
-}
-
-ISR(PCINT0_vect) {
 }
 
 void _delay(long long t) {
