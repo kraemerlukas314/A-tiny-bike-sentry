@@ -1,9 +1,21 @@
+/**
+ * @file main.ino
+ *
+ * This file includes all the main logic to switch between internal states.
+ *
+ * @author Lukas Krämer
+ */
+
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
 #include <avr/wdt.h>
 
 #include "defines.h"
 
+/**
+ * Enum to store current program state.
+ * 
+ */
 enum State {
   DEEP_SLEEP,
   SENTRY,
@@ -30,7 +42,7 @@ void setup() {
   // Configure the Watchdog Timer
   configure_watchdog();
 }
-
+// TODO: animator Klasse
 void loop() {
   // Reset the watchdog timer at the start of each loop iteration
   wdt_reset();
@@ -84,6 +96,9 @@ void loop() {
   }
 }
 
+/**
+ * Configures an interrupt on the specified PIN_BUTTON.
+ */
 void configure_button_interrupt() {
   cli();  // Disable interrupts
   GIMSK |= _BV(PCIE);  // Enable Pin Change Interrupts
@@ -91,6 +106,10 @@ void configure_button_interrupt() {
   sei();  // Enable interrupts
 }
 
+/**
+ * Interrupt routine for waking from sleep on button press.
+ * 
+ */
 ISR(PCINT0_vect) {
   // Handle button press interrupt
   if (!digitalRead(PIN_BUTTON)) {
@@ -98,6 +117,11 @@ ISR(PCINT0_vect) {
   }
 }
 
+// TODO: cant exit attention via button
+/**
+ * Configures a watchdog timer with a timeout of four seconds.
+ * 
+ */
 void configure_watchdog() {
   cli();  // Disable interrupts
   wdt_reset();
@@ -106,6 +130,11 @@ void configure_watchdog() {
   sei();  // Enable interrupts
 }
 
+
+/**
+ * Enables the watchdog timer with a timeout of four seconds.
+ * 
+ */
 void enable_watchdog() {
   cli();
   wdt_reset();
@@ -114,6 +143,10 @@ void enable_watchdog() {
   sei();
 }
 
+/**
+ * Disables the watchdog timer.
+ * 
+ */
 void disable_watchdog() {
   cli();
   wdt_reset();
@@ -121,6 +154,11 @@ void disable_watchdog() {
   sei();
 }
 
+/**
+ * Interrupt routine for the watchdog timer.
+ * If watchdog triggers, enter DEEP_SLEEP state.
+ * 
+ */
 ISR(WDT_vect) {
   // Watchdog timer interrupt: Enter sleep mode
   state = DEEP_SLEEP;
@@ -128,6 +166,13 @@ ISR(WDT_vect) {
   configure_button_interrupt();
 }
 
+/**
+ * Returns true/false based on current button state.
+ * Also debounces the button using DELAY_BUTTON_DEBOUNCE_MS.
+ * 
+ * @return true button is pressed
+ * @return false button isn't pressed
+ */
 bool button_pressed() {
   if (!digitalRead(PIN_BUTTON)) return false;
   while (digitalRead(PIN_BUTTON));
@@ -135,6 +180,13 @@ bool button_pressed() {
   return true;
 }
 
+
+/**
+ * Returns true/false based on current piezo state.
+ * 
+ * @return true piezo moved
+ * @return false piezo isn't moved
+ */
 bool piezo_moved() {
   if (analogRead(PIN_PIEZO) <= THRESHOLD_PIEZO) return false;
 
@@ -149,6 +201,13 @@ bool piezo_moved() {
   return true;
 }
 
+/**
+ * Function to toggle a digital pin on and off.
+ * 
+ * @param pin Pin to toggle on and off
+ * @param iterations How often should pin be toggled
+ * @param t delay between of/off states (t = 1 / frequency)
+ */
 void toggle(byte pin, int iterations, int t) {
   for (int i = 0; i < iterations; ++i) {
     digitalWrite(pin, HIGH);
@@ -158,6 +217,9 @@ void toggle(byte pin, int iterations, int t) {
   }
 }
 
+/**
+ * Puts ATtiny into deep sleep mode until PIN_BUTTON is pressed.
+ */
 void sleep() {
   while (digitalRead(PIN_BUTTON));
   _delay(DELAY_BUTTON_DEBOUNCE_MS);
@@ -186,11 +248,21 @@ void sleep() {
   _delay(DELAY_BUTTON_DEBOUNCE_MS);
 }
 
+/**
+ * Own delay function that counteracts different clock speeds.
+ * 
+ * @param t delay time in ms
+ */
 void _delay(long long t) {
   if (CLOCK_FREQ_MHZ == 1) delay(t * 8);
   else if (CLOCK_FREQ_MHZ == 8) delay(t);
 }
 
+/**
+ * Own millis function that counteracts different clock speeds.
+ * 
+ * @return long millis since ATtiny restart
+ */
 long long _millis() {
   if (CLOCK_FREQ_MHZ == 1) return millis() / 8;
   if (CLOCK_FREQ_MHZ == 8) return millis();
