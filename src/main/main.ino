@@ -24,9 +24,9 @@ enum State {
 };
 
 long long timestamp_last_led_toggle;
+bool led_state = true;
 long long timestamp_entered_attention;
 long long timestamp_entered_alarm;
-bool led_state = true;
 
 State state = DEEP_SLEEP;
 
@@ -35,17 +35,14 @@ void setup() {
 	pinMode(PIN_BUZZER, OUTPUT);
 	pinMode(PIN_PIEZO, INPUT);
 	pinMode(PIN_BUTTON, INPUT);
-	while (1) {
-		digitalWrite(PIN_LED, HIGH);
-	}
-
+ 
 	// Configure the button pin for pin change interrupt
 	configure_button_interrupt();
 
 	// Configure the Watchdog Timer
 	configure_watchdog();
 }
-
+// TODO: animator Klasse
 void loop() {
 	// Reset the watchdog timer
 	wdt_reset();
@@ -126,7 +123,6 @@ void configure_button_interrupt() {
 			// Invalid PIN_BUTTON
             break;
     }
-
     sei();                               // Enable interrupts
 }
 
@@ -196,6 +192,7 @@ ISR(WDT_vect) {
  * @return false button isn't pressed
  */
 bool button_pressed() {
+	// TODO: proper debouncing
 	if (!digitalRead(PIN_BUTTON)) return false;
 	while (digitalRead(PIN_BUTTON));
 	_delay(DELAY_BUTTON_DEBOUNCE_MS);
@@ -242,6 +239,7 @@ void toggle(byte pin, int iterations, int t) {
  * Puts ATtiny into deep sleep mode until PIN_BUTTON is pressed.
  */
 void sleep() {
+	// TODO: Konstante für PCINT2
 	while (digitalRead(PIN_BUTTON));
 	_delay(DELAY_BUTTON_DEBOUNCE_MS);
 	GIMSK |= _BV(PCIE);                		// Enable Pin Change Interrupts
