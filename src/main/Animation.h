@@ -15,7 +15,8 @@ class Animation {
   public:
     Animation();
     void toggle(byte pin, int d);
+    void on(byte pin);
+    void off(byte pin);
   private:
-    int test;
-    Timing timing(CLOCK_FREQ_MHZ);
+    Timing timing;
 };

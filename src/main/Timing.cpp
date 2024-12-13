@@ -20,7 +20,7 @@ Timing::Timing(byte clock_freq_mhz) {
  * 
  * @param t delay time in ms
  */
-void Timing::delay(int duration) {
+void Timing::wait_ms(long duration) {
   if (this_clock_freq_mhz == 1) delay(duration * 8);
   else if (this_clock_freq_mhz == 8) delay(duration);
   else delay(duration); // Add options for external 16MHz here if needed
@@ -31,7 +31,7 @@ void Timing::delay(int duration) {
  * 
  * @return long millis since ATtiny restart
  */
-long long Timing::millis() {
+long long Timing::get_millis() {
   if (this_clock_freq_mhz == 1) return millis() / 8;
   if (this_clock_freq_mhz == 8) return millis();
 }

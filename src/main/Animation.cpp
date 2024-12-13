@@ -9,19 +9,26 @@
 #pragma once
 
 #include "Arduino.h"
-
 #include "Animation.h"
-#include "Timing.h"
 #include "defines.h"
+#include "Timing.h"
 
-Animation::Animation() {
-  pinMode(PIN_BUTTON, INPUT);
-  Timing timing(CLOCK_FREQ_MHZ);
+Animation::Animation() : timing(CLOCK_FREQ_MHZ) {
+  pinMode(PIN_LED, OUTPUT);
+  pinMode(PIN_BUZZER, OUTPUT);
+}
+
+void Animation::on(byte pin) {
+  digitalWrite(pin, HIGH);
+}
+
+void Animation::off(byte pin) {
+  digitalWrite(pin, LOW);
 }
 
 void Animation::toggle(byte pin, int d) {
   digitalWrite(pin, HIGH);
-  timing.delay(d);
+  timing.wait_ms(d);
   digitalWrite(pin, LOW);
-  timing.delay(d);
+  timing.wait_ms(d);
 }

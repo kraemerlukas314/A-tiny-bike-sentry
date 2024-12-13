@@ -49,6 +49,7 @@ void setup() {
 
 // TODO: proper button debounce
 // TODO: remove global variables
+// TODO: variable for Interrupt port
 void loop() {
   // Reset the watchdog timer at the start of each loop iteration
   wdt_reset();
@@ -68,33 +69,33 @@ void loop() {
         toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
       } else if (piezo_moved()) {
-        timestamp_entered_attention = timing.millis();
+        timestamp_entered_attention = timing.get_millis();
         state = ATTENTION;
       }
       break;
     case ATTENTION:
       digitalWrite(PIN_LED, HIGH);
-      if (timing.millis() - timestamp_entered_attention > ATTENTION_COOLDOWN_MS) {
+      if (timing.get_millis() - timestamp_entered_attention > ATTENTION_COOLDOWN_MS) {
         state = SENTRY;
       }
       if (button_pressed()) {
         toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
       } else if (piezo_moved()) {
-        timestamp_entered_alarm = timing.millis();
+        timestamp_entered_alarm = timing.get_millis();
         state = ALARM;
       }
       break;
     case ALARM:
-      if (timing.millis() - timestamp_entered_alarm > ALARM_COOLDOWN_MS) {
-        timestamp_entered_attention = timing.millis();
+      if (timing.get_millis() - timestamp_entered_alarm > ALARM_COOLDOWN_MS) {
+        timestamp_entered_attention = timing.get_millis();
         state = ATTENTION;
       }
       if (button_pressed()) {
         toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
-      } else if (timing.millis() - timestamp_last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
-        timestamp_last_led_toggle = timing.millis();
+      } else if (timing.get_millis() - timestamp_last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
+        timestamp_last_led_toggle = timing.get_millis();
         led_state = !led_state;
         digitalWrite(PIN_LED, led_state);
       }
@@ -181,7 +182,7 @@ ISR(WDT_vect) {
 bool button_pressed() {
   if (!digitalRead(PIN_BUTTON)) return false;
   while (digitalRead(PIN_BUTTON));
-  timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
+  timing.wait_ms(DELAY_BUTTON_DEBOUNCE_MS);
   return true;
 }
 
@@ -194,11 +195,11 @@ bool button_pressed() {
 bool piezo_moved() {
   if (analogRead(PIN_PIEZO) <= THRESHOLD_PIEZO) return false;
 
-  long start_time = timing.millis();
-  while (timing.millis() - start_time < DELAY_PIEZO_MOVED_MS) {
+  long start_time = timing.get_millis();
+  while (timing.get_millis() - start_time < DELAY_PIEZO_MOVED_MS) {
     if (digitalRead(PIN_BUTTON)) {
       while (digitalRead(PIN_BUTTON));
-      timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
+      timing.wait_ms(DELAY_BUTTON_DEBOUNCE_MS);
       return false;
     }
   }
@@ -215,9 +216,9 @@ bool piezo_moved() {
 void toggle(byte pin, int iterations, int t) {
   for (int i = 0; i < iterations; ++i) {
     digitalWrite(pin, HIGH);
-    timing.delay(t);
+    timing.wait_ms(t);
     digitalWrite(pin, LOW);
-    timing.delay(t);
+    timing.wait_ms(t);
   }
 }
 
@@ -226,7 +227,7 @@ void toggle(byte pin, int iterations, int t) {
  */
 void sleep() {
   while (digitalRead(PIN_BUTTON));
-  timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
+  timing.wait_ms(DELAY_BUTTON_DEBOUNCE_MS);
   GIMSK |= _BV(PCIE);                     // Enable Pin Change Interrupts
   PCMSK |= _BV(PCINT2);                   // Use PB2 as interrupt pin
   ADCSRA &= ~_BV(ADEN);                   // ADC off
@@ -249,5 +250,5 @@ void sleep() {
   ACSR &= ~_BV(ACD);                      // Re-enable Analog Comparator
   sei();                                  // Enable interrupts
   while (digitalRead(PIN_BUTTON));
-  timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
+  timing.wait_ms(DELAY_BUTTON_DEBOUNCE_MS);
 }

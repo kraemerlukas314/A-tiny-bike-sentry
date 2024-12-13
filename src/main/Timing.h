@@ -12,8 +12,8 @@
 class Timing {
   public:
     Timing(byte clock_freq_mhz);
-    void delay(int d);
-    long long millis();
+    void wait_ms(long d);
+    long long get_millis();
   private:
     byte this_clock_freq_mhz;
 };
