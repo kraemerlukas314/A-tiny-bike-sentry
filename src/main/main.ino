@@ -11,6 +11,8 @@
 #include <avr/wdt.h>
 
 #include "defines.h"
+#include "Animation.h"
+#include "Timing.h"
 
 /**
  * Enum to store current program state.
@@ -29,6 +31,8 @@ long long timestamp_entered_alarm;
 bool led_state = true;
 
 State state = DEEP_SLEEP;
+Animation animation;
+Timing timing(CLOCK_FREQ_MHZ);
 
 void setup() {
   pinMode(PIN_LED, OUTPUT);
@@ -42,7 +46,9 @@ void setup() {
   // Configure the Watchdog Timer
   configure_watchdog();
 }
-// TODO: animator Klasse
+
+// TODO: proper button debounce
+// TODO: remove global variables
 void loop() {
   // Reset the watchdog timer at the start of each loop iteration
   wdt_reset();
@@ -62,33 +68,33 @@ void loop() {
         toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
       } else if (piezo_moved()) {
-        timestamp_entered_attention = _millis();
+        timestamp_entered_attention = timing.millis();
         state = ATTENTION;
       }
       break;
     case ATTENTION:
       digitalWrite(PIN_LED, HIGH);
-      if (_millis() - timestamp_entered_attention > ATTENTION_COOLDOWN_MS) {
+      if (timing.millis() - timestamp_entered_attention > ATTENTION_COOLDOWN_MS) {
         state = SENTRY;
       }
       if (button_pressed()) {
         toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
       } else if (piezo_moved()) {
-        timestamp_entered_alarm = _millis();
+        timestamp_entered_alarm = timing.millis();
         state = ALARM;
       }
       break;
     case ALARM:
-      if (_millis() - timestamp_entered_alarm > ALARM_COOLDOWN_MS) {
-        timestamp_entered_attention = _millis();
+      if (timing.millis() - timestamp_entered_alarm > ALARM_COOLDOWN_MS) {
+        timestamp_entered_attention = timing.millis();
         state = ATTENTION;
       }
       if (button_pressed()) {
         toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
-      } else if (_millis() - timestamp_last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
-        timestamp_last_led_toggle = _millis();
+      } else if (timing.millis() - timestamp_last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
+        timestamp_last_led_toggle = timing.millis();
         led_state = !led_state;
         digitalWrite(PIN_LED, led_state);
       }
@@ -117,7 +123,6 @@ ISR(PCINT0_vect) {
   }
 }
 
-// TODO: cant exit attention via button
 /**
  * Configures a watchdog timer with a timeout of four seconds.
  * 
@@ -176,10 +181,9 @@ ISR(WDT_vect) {
 bool button_pressed() {
   if (!digitalRead(PIN_BUTTON)) return false;
   while (digitalRead(PIN_BUTTON));
-  _delay(DELAY_BUTTON_DEBOUNCE_MS);
+  timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
   return true;
 }
-
 
 /**
  * Returns true/false based on current piezo state.
@@ -190,11 +194,11 @@ bool button_pressed() {
 bool piezo_moved() {
   if (analogRead(PIN_PIEZO) <= THRESHOLD_PIEZO) return false;
 
-  long start_time = _millis();
-  while (_millis() - start_time < DELAY_PIEZO_MOVED_MS) {
+  long start_time = timing.millis();
+  while (timing.millis() - start_time < DELAY_PIEZO_MOVED_MS) {
     if (digitalRead(PIN_BUTTON)) {
       while (digitalRead(PIN_BUTTON));
-      _delay(DELAY_BUTTON_DEBOUNCE_MS);
+      timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
       return false;
     }
   }
@@ -211,9 +215,9 @@ bool piezo_moved() {
 void toggle(byte pin, int iterations, int t) {
   for (int i = 0; i < iterations; ++i) {
     digitalWrite(pin, HIGH);
-    _delay(t);
+    timing.delay(t);
     digitalWrite(pin, LOW);
-    _delay(t);
+    timing.delay(t);
   }
 }
 
@@ -222,7 +226,7 @@ void toggle(byte pin, int iterations, int t) {
  */
 void sleep() {
   while (digitalRead(PIN_BUTTON));
-  _delay(DELAY_BUTTON_DEBOUNCE_MS);
+  timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
   GIMSK |= _BV(PCIE);                     // Enable Pin Change Interrupts
   PCMSK |= _BV(PCINT2);                   // Use PB2 as interrupt pin
   ADCSRA &= ~_BV(ADEN);                   // ADC off
@@ -245,25 +249,5 @@ void sleep() {
   ACSR &= ~_BV(ACD);                      // Re-enable Analog Comparator
   sei();                                  // Enable interrupts
   while (digitalRead(PIN_BUTTON));
-  _delay(DELAY_BUTTON_DEBOUNCE_MS);
-}
-
-/**
- * Own delay function that counteracts different clock speeds.
- * 
- * @param t delay time in ms
- */
-void _delay(long long t) {
-  if (CLOCK_FREQ_MHZ == 1) delay(t * 8);
-  else if (CLOCK_FREQ_MHZ == 8) delay(t);
-}
-
-/**
- * Own millis function that counteracts different clock speeds.
- * 
- * @return long millis since ATtiny restart
- */
-long long _millis() {
-  if (CLOCK_FREQ_MHZ == 1) return millis() / 8;
-  if (CLOCK_FREQ_MHZ == 8) return millis();
+  timing.delay(DELAY_BUTTON_DEBOUNCE_MS);
 }
