@@ -1,10 +1,10 @@
 /**
- * @file main.ino
- *
- * This file includes all the main logic to switch between internal states.
- *
- * @author Lukas Krämer
- */
+   @file main.ino
+
+   This file includes all the main logic to switch between internal states.
+
+   @author Lukas Krämer
+*/
 
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
@@ -15,9 +15,9 @@
 #include "Timing.h"
 
 /**
- * Enum to store current program state.
- * 
- */
+   Enum to store current program state.
+
+*/
 enum State {
   DEEP_SLEEP,
   SENTRY,
@@ -28,7 +28,7 @@ enum State {
 long long timestamp_last_led_toggle;
 long long timestamp_entered_attention;
 long long timestamp_entered_alarm;
-bool led_state = true;
+byte led_state = 1;
 
 State state = DEEP_SLEEP;
 Animation animation;
@@ -40,33 +40,31 @@ void setup() {
   pinMode(PIN_PIEZO, INPUT);
   pinMode(PIN_BUTTON, INPUT);
 
-  // Configure the button pin for pin change interrupt
   configure_button_interrupt();
 
-  // Configure the Watchdog Timer
   configure_watchdog();
 }
 
 // TODO: proper button debounce
-// TODO: remove global variables
 // TODO: variable for Interrupt port
+// TODO: why is button press sometimes not recognized in SENTRY and ATTENTION? Probably has to do with piezo_moved
 void loop() {
   // Reset the watchdog timer at the start of each loop iteration
   wdt_reset();
 
   switch (state) {
     case DEEP_SLEEP:
-      digitalWrite(PIN_LED, LOW);
+      animation.off(PIN_LED);
       disable_watchdog();  // Disable WDT to save power
       sleep();
       enable_watchdog();   // Re-enable WDT after waking up
       state = SENTRY;
-      toggle(PIN_LED, 3, 100);
+      animation.toggle(PIN_LED, 3, 100);
       break;
     case SENTRY:
-      digitalWrite(PIN_LED, LOW);
+      animation.off(PIN_LED);
       if (button_pressed()) {
-        toggle(PIN_LED, 2, 400);
+        animation.toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
       } else if (piezo_moved()) {
         timestamp_entered_attention = timing.get_millis();
@@ -74,14 +72,15 @@ void loop() {
       }
       break;
     case ATTENTION:
-      digitalWrite(PIN_LED, HIGH);
+      animation.on(PIN_LED);
       if (timing.get_millis() - timestamp_entered_attention > ATTENTION_COOLDOWN_MS) {
         state = SENTRY;
       }
       if (button_pressed()) {
-        toggle(PIN_LED, 2, 400);
+        animation.toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
       } else if (piezo_moved()) {
+		animation.off(PIN_LED);
         timestamp_entered_alarm = timing.get_millis();
         state = ALARM;
       }
@@ -92,20 +91,22 @@ void loop() {
         state = ATTENTION;
       }
       if (button_pressed()) {
-        toggle(PIN_LED, 2, 400);
+		animation.off(PIN_BUZZER);
+    	animation.toggle(PIN_LED, 2, 400);
         state = DEEP_SLEEP;
       } else if (timing.get_millis() - timestamp_last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
         timestamp_last_led_toggle = timing.get_millis();
         led_state = !led_state;
-        digitalWrite(PIN_LED, led_state);
+        animation.set_pin(PIN_LED, led_state);
+        animation.set_pin(PIN_BUZZER, !led_state);
       }
       break;
   }
 }
 
 /**
- * Configures an interrupt on the specified PIN_BUTTON.
- */
+   Configures an interrupt on the specified PIN_BUTTON.
+*/
 void configure_button_interrupt() {
   cli();  // Disable interrupts
   GIMSK |= _BV(PCIE);  // Enable Pin Change Interrupts
@@ -114,9 +115,9 @@ void configure_button_interrupt() {
 }
 
 /**
- * Interrupt routine for waking from sleep on button press.
- * 
- */
+   Interrupt routine for waking from sleep on button press.
+
+*/
 ISR(PCINT0_vect) {
   // Handle button press interrupt
   if (!digitalRead(PIN_BUTTON)) {
@@ -125,9 +126,9 @@ ISR(PCINT0_vect) {
 }
 
 /**
- * Configures a watchdog timer with a timeout of four seconds.
- * 
- */
+   Configures a watchdog timer with a timeout of four seconds.
+
+*/
 void configure_watchdog() {
   cli();  // Disable interrupts
   wdt_reset();
@@ -138,9 +139,9 @@ void configure_watchdog() {
 
 
 /**
- * Enables the watchdog timer with a timeout of four seconds.
- * 
- */
+   Enables the watchdog timer with a timeout of four seconds.
+
+*/
 void enable_watchdog() {
   cli();
   wdt_reset();
@@ -150,9 +151,9 @@ void enable_watchdog() {
 }
 
 /**
- * Disables the watchdog timer.
- * 
- */
+   Disables the watchdog timer.
+
+*/
 void disable_watchdog() {
   cli();
   wdt_reset();
@@ -161,10 +162,10 @@ void disable_watchdog() {
 }
 
 /**
- * Interrupt routine for the watchdog timer.
- * If watchdog triggers, enter DEEP_SLEEP state.
- * 
- */
+   Interrupt routine for the watchdog timer.
+   If watchdog triggers, enter DEEP_SLEEP state.
+
+*/
 ISR(WDT_vect) {
   // Watchdog timer interrupt: Enter sleep mode
   state = DEEP_SLEEP;
@@ -173,12 +174,12 @@ ISR(WDT_vect) {
 }
 
 /**
- * Returns true/false based on current button state.
- * Also debounces the button using DELAY_BUTTON_DEBOUNCE_MS.
- * 
- * @return true button is pressed
- * @return false button isn't pressed
- */
+   Returns true/false based on current button state.
+   Also debounces the button using DELAY_BUTTON_DEBOUNCE_MS.
+
+   @return true button is pressed
+   @return false button isn't pressed
+*/
 bool button_pressed() {
   if (!digitalRead(PIN_BUTTON)) return false;
   while (digitalRead(PIN_BUTTON));
@@ -187,11 +188,11 @@ bool button_pressed() {
 }
 
 /**
- * Returns true/false based on current piezo state.
- * 
- * @return true piezo moved
- * @return false piezo isn't moved
- */
+   Returns true/false based on current piezo state.
+
+   @return true piezo moved
+   @return false piezo isn't moved
+*/
 bool piezo_moved() {
   if (analogRead(PIN_PIEZO) <= THRESHOLD_PIEZO) return false;
 
@@ -206,25 +207,10 @@ bool piezo_moved() {
   return true;
 }
 
-/**
- * Function to toggle a digital pin on and off.
- * 
- * @param pin Pin to toggle on and off
- * @param iterations How often should pin be toggled
- * @param t delay between of/off states (t = 1 / frequency)
- */
-void toggle(byte pin, int iterations, int t) {
-  for (int i = 0; i < iterations; ++i) {
-    digitalWrite(pin, HIGH);
-    timing.wait_ms(t);
-    digitalWrite(pin, LOW);
-    timing.wait_ms(t);
-  }
-}
 
 /**
- * Puts ATtiny into deep sleep mode until PIN_BUTTON is pressed.
- */
+   Puts ATtiny into deep sleep mode until PIN_BUTTON is pressed.
+*/
 void sleep() {
   while (digitalRead(PIN_BUTTON));
   timing.wait_ms(DELAY_BUTTON_DEBOUNCE_MS);
