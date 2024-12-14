@@ -10,10 +10,11 @@
 #include "Arduino.h"
 
 class Timing {
-  public:
+   public:
     Timing(byte clock_freq_mhz);
     void wait_ms(long d);
     long long get_millis();
-  private:
+
+   private:
     byte this_clock_freq_mhz;
 };

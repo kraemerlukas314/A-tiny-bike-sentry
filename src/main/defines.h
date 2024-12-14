@@ -6,8 +6,6 @@
  * @author Lukas Krämer
  */
 
-#define CLOCK_FREQ_MHZ 1 // needed to adjust delay and millis function according to clock speed
-
 #define PIN_LED 1
 #define PIN_BUTTON 2
 #define PIN_PIEZO 3
@@ -20,3 +18,5 @@
 #define DELAY_PIEZO_MOVED_MS 500
 #define ATTENTION_COOLDOWN_MS 5000
 #define ALARM_COOLDOWN_MS 5000
+
+#define CLOCK_FREQ_MHZ 1

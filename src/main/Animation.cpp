@@ -1,47 +1,48 @@
 /**
  * @file Animation.cpp
  *
- * Cpp file for Animation class that provides 
- * functions for hardware animations (e.g. LEDS, Buzzers)
+ * Cpp file for Animation class that provides
+ * functions for various animations (e.g. when switching states)
  *
  * @author Lukas Krämer
  */
 #pragma once
 
-#include "Arduino.h"
 #include "Animation.h"
-#include "defines.h"
+
+#include "Arduino.h"
+#include "Gpio.h"
 #include "Timing.h"
+#include "defines.h"
 
-Animation::Animation() : timing(CLOCK_FREQ_MHZ) {
-  pinMode(PIN_LED, OUTPUT);
-  pinMode(PIN_BUZZER, OUTPUT);
+Animation::Animation() : timing(CLOCK_FREQ_MHZ), gpio() {
+    gpio.setup();
+    led_state = false;
 }
 
-void Animation::on(byte pin) {
-  digitalWrite(pin, HIGH);
+void Animation::enter_sentry() {
+    gpio.toggle(PIN_LED, 3, 100);
 }
 
-void Animation::off(byte pin) {
-  digitalWrite(pin, LOW);
+void Animation::enter_deep_sleep() {
+    gpio.toggle(PIN_LED, 2, 400);
 }
 
-void Animation::set_pin(byte pin, bool state) {
-  digitalWrite(pin, state);
+void Animation::in_sentry() {
+    gpio.off(PIN_LED);
 }
 
-/**
- * Function to toggle a digital pin on and off.
- * 
- * @param pin Pin to toggle on and off
- * @param iterations How often should pin be toggled
- * @param t delay between of/off states (t = 1 / frequency)
- */
-void Animation::toggle(byte pin, int iterations, long d) {
-  for (int i = 0; i < iterations; ++i) {
-    digitalWrite(pin, HIGH);
-    timing.wait_ms(d);
-    digitalWrite(pin, LOW);
-    timing.wait_ms(d);
-  }
+void Animation::in_attention() {
+    gpio.on(PIN_LED);
+}
+
+void Animation::exit_alarm() {
+    gpio.off(PIN_LED);
+    gpio.off(PIN_BUZZER);
+}
+
+void Animation::alarm() {
+    gpio.set_pin(PIN_LED, led_state);
+    gpio.set_pin(PIN_BUZZER, !led_state);
+    led_state = !led_state;
 }
