@@ -12,6 +12,11 @@
 #include "Timing.h"
 #include "defines.h"
 
+/**
+ * Animation class that provides
+ * functions for various animations (e.g. when switching states)
+ *
+ */
 class Animation {
    public:
     Animation();

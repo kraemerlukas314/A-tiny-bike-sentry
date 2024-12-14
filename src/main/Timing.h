@@ -9,6 +9,11 @@
 
 #include "Arduino.h"
 
+/**
+ * Timing class that provides corrected
+ * delay and millis functions based on selected clock frequency.
+ *
+ */
 class Timing {
    public:
     Timing(byte clock_freq_mhz);

@@ -11,6 +11,11 @@
 #include "Timing.h"
 #include "defines.h"
 
+/**
+ * Gpio class that provides
+ * functions for direct hardware actions (e.g. turning on/off digital pins)
+ *
+ */
 class Gpio {
    public:
     Gpio();
