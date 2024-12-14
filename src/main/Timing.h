@@ -1,7 +1,7 @@
 /**
  * @file Timing.h
  *
- * Header file for Timing class
+ * Header file for Timing class.
  *
  * @author Lukas Krämer
  */

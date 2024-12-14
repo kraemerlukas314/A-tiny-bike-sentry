@@ -23,7 +23,6 @@
 
 /**
    Enum to store current program state.
-
 */
 enum State {
     DEEP_SLEEP,
@@ -48,10 +47,7 @@ void setup() {
     configure_watchdog();
 }
 
-// TODO: proper button debounce
-// TODO: why is button press sometimes not recognized in SENTRY and ATTENTION? Probably has to do with piezo_moved
 void loop() {
-    // Reset the watchdog timer at the start of each loop iteration
     wdt_reset();
 
     switch (state) {
@@ -98,7 +94,7 @@ void loop() {
                 state = DEEP_SLEEP;
             } else if (timing.get_millis() - timestamp_last_led_toggle > (1000 / ALARM_TOGGLE_FREQ)) {
                 timestamp_last_led_toggle = timing.get_millis();
-                animation.alarm();
+                animation.in_alarm();
             }
             break;
     }
@@ -151,7 +147,6 @@ void enable_watchdog() {
 
 /**
    Disables the watchdog timer.
-
 */
 void disable_watchdog() {
     cli();
@@ -163,7 +158,6 @@ void disable_watchdog() {
 /**
    Interrupt routine for the watchdog timer.
    If watchdog triggers, enter DEEP_SLEEP state.
-
 */
 ISR(WDT_vect) {
     // Watchdog timer interrupt: Enter sleep mode
@@ -174,7 +168,7 @@ ISR(WDT_vect) {
 
 /**
    Returns true/false based on current button state.
-   Also debounces the button using DELAY_BUTTON_DEBOUNCE_MS.
+   Also "debounces" the button using DELAY_BUTTON_DEBOUNCE_MS.
 
    @return true button is pressed
    @return false button isn't pressed

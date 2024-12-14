@@ -20,7 +20,7 @@ class Animation {
     void in_sentry();
     void in_attention();
     void exit_alarm();
-    void alarm();
+    void in_alarm();
 
    private:
     Timing timing;

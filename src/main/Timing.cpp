@@ -12,6 +12,11 @@
 
 #include "Arduino.h"
 
+/**
+ * Constructor for Timing class.
+ *
+ * @param clock_freq_mhz selected clock frequency.
+ */
 Timing::Timing(byte clock_freq_mhz) {
     this_clock_freq_mhz = clock_freq_mhz;
 }

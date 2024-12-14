@@ -14,24 +14,49 @@
 #include "Timing.h"
 #include "defines.h"
 
+/**
+ * Constructor for Timing class.
+ *
+ */
 Gpio::Gpio() : timing(CLOCK_FREQ_MHZ) {
     pinMode(PIN_LED, OUTPUT);
     pinMode(PIN_BUZZER, OUTPUT);
 }
 
+/**
+ * GPIO setup function.
+ * Sets all output pins as outputs.
+ *
+ */
 void Gpio::setup() {
     pinMode(PIN_LED, OUTPUT);
     pinMode(PIN_BUZZER, OUTPUT);
 }
 
+/**
+ * Turns on a pin.
+ *
+ * @param pin pin to turn on
+ */
 void Gpio::on(byte pin) {
     digitalWrite(pin, HIGH);
 }
 
+/**
+ * Turns off a pin.
+ *
+ * @param pin pin to turn off
+ */
 void Gpio::off(byte pin) {
     digitalWrite(pin, LOW);
 }
 
+/**
+ * Sets pin to state.
+ *
+ * @param pin pin to set state
+ * @param state state to set (true/false)
+ */
 void Gpio::set_pin(byte pin, bool state) {
     digitalWrite(pin, state);
 }
