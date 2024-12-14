@@ -49,7 +49,6 @@ void setup() {
 }
 
 // TODO: proper button debounce
-// TODO: variable for Interrupt port
 // TODO: why is button press sometimes not recognized in SENTRY and ATTENTION? Probably has to do with piezo_moved
 void loop() {
     // Reset the watchdog timer at the start of each loop iteration
@@ -109,10 +108,10 @@ void loop() {
    Configures an interrupt on the specified PIN_BUTTON.
 */
 void configure_button_interrupt() {
-    cli();                 // Disable interrupts
-    GIMSK |= _BV(PCIE);    // Enable Pin Change Interrupts
-    PCMSK |= _BV(PCINT2);  // Enable interrupt on PIN_BUTTON (PB2)
-    sei();                 // Enable interrupts
+    cli();                     // Disable interrupts
+    GIMSK |= _BV(PCIE);        // Enable Pin Change Interrupts
+    PCMSK |= _BV(PIN_BUTTON);  // Enable interrupt on PIN_BUTTON
+    sei();                     // Enable interrupts
 }
 
 /**
@@ -182,6 +181,8 @@ ISR(WDT_vect) {
 */
 bool button_pressed() {
     if (!digitalRead(PIN_BUTTON)) return false;
+    gpio.off(PIN_BUZZER);
+    gpio.off(PIN_LED);
     while (digitalRead(PIN_BUTTON));
     timing.wait_ms(DELAY_BUTTON_DEBOUNCE_MS);
     return true;
@@ -214,7 +215,7 @@ void sleep() {
     while (digitalRead(PIN_BUTTON));
     timing.wait_ms(DELAY_BUTTON_DEBOUNCE_MS);
     GIMSK |= _BV(PCIE);                   // Enable Pin Change Interrupts
-    PCMSK |= _BV(PCINT2);                 // Use PB2 as interrupt pin
+    PCMSK |= _BV(PIN_BUTTON);             // Use PB2 as interrupt pin
     ADCSRA &= ~_BV(ADEN);                 // ADC off
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);  // Set sleep mode
 
@@ -227,10 +228,10 @@ void sleep() {
     sei();           // Enable interrupts
     sleep_cpu();     // Go to sleep
 
-    cli();                  // Disable interrupts
-    PCMSK &= ~_BV(PCINT2);  // Turn off PB2 as interrupt pin
-    sleep_disable();        // Clear SE bit
-    ADCSRA |= _BV(ADEN);    // ADC on
+    cli();                      // Disable interrupts
+    PCMSK &= ~_BV(PIN_BUTTON);  // Turn off button interrupt pin
+    sleep_disable();            // Clear SE bit
+    ADCSRA |= _BV(ADEN);        // ADC on
 
     ACSR &= ~_BV(ACD);  // Re-enable Analog Comparator
     sei();              // Enable interrupts
