@@ -1,0 +1,40 @@
+\doxysection{Animation.\+h}
+\hypertarget{Animation_8h_source}{}\label{Animation_8h_source}\index{src/main/Animation.h@{src/main/Animation.h}}
+\mbox{\hyperlink{Animation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00001}00001\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ Animation.h}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Header\ file\ for\ Animation\ class}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00005}00005\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @author\ Lukas\ Krämer}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00007}00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Gpio_8h}{Gpio.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Timing_8h}{Timing.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{defines_8h}{defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00015}00015\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00016}00016\ \textcolor{comment}{\ *\ Animation\ class\ that\ provides}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00017}00017\ \textcolor{comment}{\ *\ functions\ for\ various\ animations\ (e.g.\ when\ switching\ states)}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00019}00019\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00020}\mbox{\hyperlink{classAnimation}{00020}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAnimation}{Animation}}\ \{}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00021}00021\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classAnimation_a83f0a16cef7117f187ad596de38dd9d6}{Animation}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnimation_ac5c2f4f8734baec887df571960ce7517}{enter\_sentry}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnimation_ac7681c6f56983c668054f1c66abaa53d}{enter\_deep\_sleep}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnimation_a4c8022777b74e3f645bb147035a72ad9}{in\_sentry}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnimation_a655dfc67ade58898fe2fbcbc4b0b36b4}{in\_attention}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnimation_a55d2a7631800340baf2753fcf2a5a4c3}{exit\_alarm}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnimation_a18b6277f0fbb999535d20da6f5c7a98a}{in\_alarm}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00030}00030\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00031}\mbox{\hyperlink{classAnimation_a12d9d1b4db91738e8468f048152b202f}{00031}}\ \ \ \ \ \mbox{\hyperlink{classTiming}{Timing}}\ \mbox{\hyperlink{classAnimation_a12d9d1b4db91738e8468f048152b202f}{timing}};\ \ \ \textcolor{comment}{///<\ Timing\ instance}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00032}\mbox{\hyperlink{classAnimation_a5a558b6ddc2bcbf7cd1f85f02dbcefd8}{00032}}\ \ \ \ \ \mbox{\hyperlink{classGpio}{Gpio}}\ \mbox{\hyperlink{classAnimation_a5a558b6ddc2bcbf7cd1f85f02dbcefd8}{gpio}};\ \ \ \ \ \ \ \textcolor{comment}{///<\ GPIO\ instance}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00033}\mbox{\hyperlink{classAnimation_a39e733801a30c8c0dc58b4beb31ca287}{00033}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classAnimation_a39e733801a30c8c0dc58b4beb31ca287}{led\_state}};\ \ \textcolor{comment}{///<\ current\ led\ state\ in\ alarm}}
+\DoxyCodeLine{\Hypertarget{Animation_8h_source_l00034}00034\ \};}
+
+\end{DoxyCode}

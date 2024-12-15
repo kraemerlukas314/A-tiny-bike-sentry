@@ -26,5 +26,5 @@ class Gpio {
     void toggle(byte pin, int iterations, long d);
 
    private:
-    Timing timing;
+    Timing timing;  ///< Timing instance
 };

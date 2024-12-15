@@ -66,7 +66,7 @@ void Gpio::set_pin(byte pin, bool state) {
  *
  * @param pin Pin to toggle on and off
  * @param iterations How often should pin be toggled
- * @param t delay between of/off states (t = 1 / frequency)
+ * @param d delay between of/off states (d = 1 / frequency)
  */
 void Gpio::toggle(byte pin, int iterations, long d) {
     for (int i = 0; i < iterations; ++i) {

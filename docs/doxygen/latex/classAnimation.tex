@@ -1,0 +1,237 @@
+\doxysection{Animation Class Reference}
+\hypertarget{classAnimation}{}\label{classAnimation}\index{Animation@{Animation}}
+
+
+\doxylink{classAnimation}{Animation} class that provides functions for various animations (e.\+g.  
+
+
+
+
+{\ttfamily \#include $<$Animation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAnimation_a83f0a16cef7117f187ad596de38dd9d6}{Animation}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classAnimation}{Animation} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAnimation_ac5c2f4f8734baec887df571960ce7517}{enter\+\_\+sentry}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classAnimation}{Animation} to play when enterying sentry state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAnimation_ac7681c6f56983c668054f1c66abaa53d}{enter\+\_\+deep\+\_\+sleep}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classAnimation}{Animation} to play when enterying deep sleep state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAnimation_a4c8022777b74e3f645bb147035a72ad9}{in\+\_\+sentry}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classAnimation}{Animation} to play when in sentry mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAnimation_a655dfc67ade58898fe2fbcbc4b0b36b4}{in\+\_\+attention}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classAnimation}{Animation} to play when in attention mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAnimation_a55d2a7631800340baf2753fcf2a5a4c3}{exit\+\_\+alarm}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classAnimation}{Animation} to play when exiting alarm mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAnimation_a18b6277f0fbb999535d20da6f5c7a98a}{in\+\_\+alarm}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classAnimation}{Animation} to play when in alarm mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTiming}{Timing}} \mbox{\hyperlink{classAnimation_a12d9d1b4db91738e8468f048152b202f}{timing}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classTiming}{Timing} instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGpio}{Gpio}} \mbox{\hyperlink{classAnimation_a5a558b6ddc2bcbf7cd1f85f02dbcefd8}{gpio}}
+\begin{DoxyCompactList}\small\item\em GPIO instance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAnimation_a39e733801a30c8c0dc58b4beb31ca287}{led\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em current led state in alarm \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classAnimation}{Animation} class that provides functions for various animations (e.\+g. 
+
+when switching states) 
+
+Definition at line \mbox{\hyperlink{Animation_8h_source_l00020}{20}} of file \mbox{\hyperlink{Animation_8h_source}{Animation.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAnimation_a83f0a16cef7117f187ad596de38dd9d6}\label{classAnimation_a83f0a16cef7117f187ad596de38dd9d6} 
+\index{Animation@{Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{Animation()}{Animation()}}
+{\footnotesize\ttfamily Animation\+::\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{classAnimation}{Animation} class. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Animation_8h_source_l00032}{gpio}}, \mbox{\hyperlink{Animation_8h_source_l00033}{led\+\_\+state}}, and \mbox{\hyperlink{Gpio_8cpp_source_l00031}{Gpio\+::setup()}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAnimation_ac7681c6f56983c668054f1c66abaa53d}\label{classAnimation_ac7681c6f56983c668054f1c66abaa53d} 
+\index{Animation@{Animation}!enter\_deep\_sleep@{enter\_deep\_sleep}}
+\index{enter\_deep\_sleep@{enter\_deep\_sleep}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{enter\_deep\_sleep()}{enter\_deep\_sleep()}}
+{\footnotesize\ttfamily void Animation\+::enter\+\_\+deep\+\_\+sleep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classAnimation}{Animation} to play when enterying deep sleep state. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Animation_8h_source_l00032}{gpio}}, \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}, and \mbox{\hyperlink{Gpio_8cpp_source_l00071}{Gpio\+::toggle()}}.
+
+\Hypertarget{classAnimation_ac5c2f4f8734baec887df571960ce7517}\label{classAnimation_ac5c2f4f8734baec887df571960ce7517} 
+\index{Animation@{Animation}!enter\_sentry@{enter\_sentry}}
+\index{enter\_sentry@{enter\_sentry}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{enter\_sentry()}{enter\_sentry()}}
+{\footnotesize\ttfamily void Animation\+::enter\+\_\+sentry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classAnimation}{Animation} to play when enterying sentry state. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Animation_8h_source_l00032}{gpio}}, \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}, and \mbox{\hyperlink{Gpio_8cpp_source_l00071}{Gpio\+::toggle()}}.
+
+\Hypertarget{classAnimation_a55d2a7631800340baf2753fcf2a5a4c3}\label{classAnimation_a55d2a7631800340baf2753fcf2a5a4c3} 
+\index{Animation@{Animation}!exit\_alarm@{exit\_alarm}}
+\index{exit\_alarm@{exit\_alarm}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{exit\_alarm()}{exit\_alarm()}}
+{\footnotesize\ttfamily void Animation\+::exit\+\_\+alarm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classAnimation}{Animation} to play when exiting alarm mode. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Animation_8h_source_l00032}{gpio}}, \mbox{\hyperlink{Gpio_8cpp_source_l00050}{Gpio\+::off()}}, \mbox{\hyperlink{defines_8h_source_l00027}{PIN\+\_\+\+BUZZER}}, and \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}.
+
+\Hypertarget{classAnimation_a18b6277f0fbb999535d20da6f5c7a98a}\label{classAnimation_a18b6277f0fbb999535d20da6f5c7a98a} 
+\index{Animation@{Animation}!in\_alarm@{in\_alarm}}
+\index{in\_alarm@{in\_alarm}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{in\_alarm()}{in\_alarm()}}
+{\footnotesize\ttfamily void Animation\+::in\+\_\+alarm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classAnimation}{Animation} to play when in alarm mode. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Animation_8h_source_l00032}{gpio}}, \mbox{\hyperlink{Animation_8h_source_l00033}{led\+\_\+state}}, \mbox{\hyperlink{defines_8h_source_l00027}{PIN\+\_\+\+BUZZER}}, \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}, and \mbox{\hyperlink{Gpio_8cpp_source_l00060}{Gpio\+::set\+\_\+pin()}}.
+
+\Hypertarget{classAnimation_a655dfc67ade58898fe2fbcbc4b0b36b4}\label{classAnimation_a655dfc67ade58898fe2fbcbc4b0b36b4} 
+\index{Animation@{Animation}!in\_attention@{in\_attention}}
+\index{in\_attention@{in\_attention}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{in\_attention()}{in\_attention()}}
+{\footnotesize\ttfamily void Animation\+::in\+\_\+attention (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classAnimation}{Animation} to play when in attention mode. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Animation_8h_source_l00032}{gpio}}, \mbox{\hyperlink{Gpio_8cpp_source_l00041}{Gpio\+::on()}}, and \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}.
+
+\Hypertarget{classAnimation_a4c8022777b74e3f645bb147035a72ad9}\label{classAnimation_a4c8022777b74e3f645bb147035a72ad9} 
+\index{Animation@{Animation}!in\_sentry@{in\_sentry}}
+\index{in\_sentry@{in\_sentry}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{in\_sentry()}{in\_sentry()}}
+{\footnotesize\ttfamily void Animation\+::in\+\_\+sentry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classAnimation}{Animation} to play when in sentry mode. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Animation_8h_source_l00032}{gpio}}, \mbox{\hyperlink{Gpio_8cpp_source_l00050}{Gpio\+::off()}}, and \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classAnimation_a5a558b6ddc2bcbf7cd1f85f02dbcefd8}\label{classAnimation_a5a558b6ddc2bcbf7cd1f85f02dbcefd8} 
+\index{Animation@{Animation}!gpio@{gpio}}
+\index{gpio@{gpio}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{gpio}{gpio}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGpio}{Gpio}} Animation\+::gpio\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+GPIO instance. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8h_source_l00032}{32}} of file \mbox{\hyperlink{Animation_8h_source}{Animation.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Animation_8cpp_source_l00021}{Animation()}}, \mbox{\hyperlink{Animation_8cpp_source_l00038}{enter\+\_\+deep\+\_\+sleep()}}, \mbox{\hyperlink{Animation_8cpp_source_l00030}{enter\+\_\+sentry()}}, \mbox{\hyperlink{Animation_8cpp_source_l00062}{exit\+\_\+alarm()}}, \mbox{\hyperlink{Animation_8cpp_source_l00071}{in\+\_\+alarm()}}, \mbox{\hyperlink{Animation_8cpp_source_l00054}{in\+\_\+attention()}}, and \mbox{\hyperlink{Animation_8cpp_source_l00046}{in\+\_\+sentry()}}.
+
+\Hypertarget{classAnimation_a39e733801a30c8c0dc58b4beb31ca287}\label{classAnimation_a39e733801a30c8c0dc58b4beb31ca287} 
+\index{Animation@{Animation}!led\_state@{led\_state}}
+\index{led\_state@{led\_state}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{led\_state}{led\_state}}
+{\footnotesize\ttfamily bool Animation\+::led\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+current led state in alarm 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8h_source_l00033}{33}} of file \mbox{\hyperlink{Animation_8h_source}{Animation.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Animation_8cpp_source_l00021}{Animation()}}, and \mbox{\hyperlink{Animation_8cpp_source_l00071}{in\+\_\+alarm()}}.
+
+\Hypertarget{classAnimation_a12d9d1b4db91738e8468f048152b202f}\label{classAnimation_a12d9d1b4db91738e8468f048152b202f} 
+\index{Animation@{Animation}!timing@{timing}}
+\index{timing@{timing}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{timing}{timing}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTiming}{Timing}} Animation\+::timing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{classTiming}{Timing} instance. 
+
+
+
+Definition at line \mbox{\hyperlink{Animation_8h_source_l00031}{31}} of file \mbox{\hyperlink{Animation_8h_source}{Animation.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/main/\mbox{\hyperlink{Animation_8h}{Animation.\+h}}\item 
+src/main/\mbox{\hyperlink{Animation_8cpp}{Animation.\+cpp}}\end{DoxyCompactItemize}

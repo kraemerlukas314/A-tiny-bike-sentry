@@ -28,7 +28,7 @@ class Animation {
     void in_alarm();
 
    private:
-    Timing timing;
-    Gpio gpio;
-    bool led_state;
+    Timing timing;   ///< Timing instance
+    Gpio gpio;       ///< GPIO instance
+    bool led_state;  ///< current led state in alarm
 };

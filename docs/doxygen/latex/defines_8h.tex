@@ -1,46 +1,201 @@
-\doxysection{C\+:/\+Users/lukas/\+DATA/\+Uni/\+S3/\+Projekt Eingebettete Software und AG Smart Technology/\+A-\/tiny-\/bike-\/sentry/src/main/defines.h File Reference}
-\hypertarget{defines_8h}{}\label{defines_8h}\index{C:/Users/lukas/DATA/Uni/S3/Projekt Eingebettete Software und AG Smart Technology/A-\/tiny-\/bike-\/sentry/src/main/defines.h@{C:/Users/lukas/DATA/Uni/S3/Projekt Eingebettete Software und AG Smart Technology/A-\/tiny-\/bike-\/sentry/src/main/defines.h}}
+\doxysection{src/main/defines.h File Reference}
+\hypertarget{defines_8h}{}\label{defines_8h}\index{src/main/defines.h@{src/main/defines.h}}
+
+
+This file includes all important declarations and definitions.  
+
+
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{defines_8h_ae70934b3338990d4a3faecf2ee172d92}\label{defines_8h_ae70934b3338990d4a3faecf2ee172d92} 
-\#define {\bfseries PIN\+\_\+\+LED}~1
-\item 
-\Hypertarget{defines_8h_a3be8154d350ce65f5e6c1dfc284700af}\label{defines_8h_a3be8154d350ce65f5e6c1dfc284700af} 
-\#define {\bfseries PIN\+\_\+\+BUTTON}~2
-\item 
-\Hypertarget{defines_8h_ad67197684098f7e8191189a49b5198cd}\label{defines_8h_ad67197684098f7e8191189a49b5198cd} 
-\#define {\bfseries PIN\+\_\+\+PIEZO}~3
-\item 
-\Hypertarget{defines_8h_a192ea8eaba652d29bfc08675edebb6a2}\label{defines_8h_a192ea8eaba652d29bfc08675edebb6a2} 
-\#define {\bfseries PIN\+\_\+\+BUZZER}~4
-\item 
-\Hypertarget{defines_8h_a5be5a63f189faba4da1c6f98d11310c6}\label{defines_8h_a5be5a63f189faba4da1c6f98d11310c6} 
-\#define {\bfseries THRESHOLD\+\_\+\+PIEZO}~30
-\item 
-\Hypertarget{defines_8h_ae8df221e4e5e1930a43fb7d2c3944665}\label{defines_8h_ae8df221e4e5e1930a43fb7d2c3944665} 
-\#define {\bfseries DELAY\+\_\+\+BUTTON\+\_\+\+DEBOUNCE\+\_\+\+MS}~50
-\item 
-\Hypertarget{defines_8h_a253c5c57ad2d67b9d8b6ddb553dde09a}\label{defines_8h_a253c5c57ad2d67b9d8b6ddb553dde09a} 
-\#define {\bfseries ALARM\+\_\+\+TOGGLE\+\_\+\+FREQ}~20
-\item 
-\Hypertarget{defines_8h_a6cd671141c60a732c42f1ad79f1a5890}\label{defines_8h_a6cd671141c60a732c42f1ad79f1a5890} 
-\#define {\bfseries DELAY\+\_\+\+PIEZO\+\_\+\+MOVED\+\_\+\+MS}~500
-\item 
-\Hypertarget{defines_8h_a9e1a2184797108f3fd67e0251343d960}\label{defines_8h_a9e1a2184797108f3fd67e0251343d960} 
-\#define {\bfseries ATTENTION\+\_\+\+COOLDOWN\+\_\+\+MS}~5000
-\item 
-\Hypertarget{defines_8h_a6b3c978dd2a7b246650bb233f2b8e942}\label{defines_8h_a6b3c978dd2a7b246650bb233f2b8e942} 
-\#define {\bfseries ALARM\+\_\+\+COOLDOWN\+\_\+\+MS}~5000
-\item 
-\Hypertarget{defines_8h_a28a3e5097d1f1cac1cd73737434760dc}\label{defines_8h_a28a3e5097d1f1cac1cd73737434760dc} 
-\#define {\bfseries CLOCK\+\_\+\+FREQ\+\_\+\+MHZ}~1
-\end{DoxyCompactItemize}
+\#define \mbox{\hyperlink{defines_8h_ae70934b3338990d4a3faecf2ee172d92}{PIN\+\_\+\+LED}}~1
+\begin{DoxyCompactList}\small\item\em Pin for the LED. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a3be8154d350ce65f5e6c1dfc284700af}{PIN\+\_\+\+BUTTON}}~2
+\begin{DoxyCompactList}\small\item\em Pin for the button. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_ad67197684098f7e8191189a49b5198cd}{PIN\+\_\+\+PIEZO}}~3
+\begin{DoxyCompactList}\small\item\em Pin for the piezo. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a192ea8eaba652d29bfc08675edebb6a2}{PIN\+\_\+\+BUZZER}}~4
+\begin{DoxyCompactList}\small\item\em Pin for the button. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a28a3e5097d1f1cac1cd73737434760dc}{CLOCK\+\_\+\+FREQ\+\_\+\+MHZ}}~1
+\begin{DoxyCompactList}\small\item\em Selected clock frequency in MHz. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a5be5a63f189faba4da1c6f98d11310c6}{THRESHOLD\+\_\+\+PIEZO}}~30
+\begin{DoxyCompactList}\small\item\em Threshold for piezo for movement detection. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_ae8df221e4e5e1930a43fb7d2c3944665}{DELAY\+\_\+\+BUTTON\+\_\+\+DEBOUNCE\+\_\+\+MS}}~50
+\begin{DoxyCompactList}\small\item\em Button debounce delay. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a253c5c57ad2d67b9d8b6ddb553dde09a}{ALARM\+\_\+\+TOGGLE\+\_\+\+FREQ}}~20
+\begin{DoxyCompactList}\small\item\em Frequency for alarm. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a6cd671141c60a732c42f1ad79f1a5890}{DELAY\+\_\+\+PIEZO\+\_\+\+MOVED\+\_\+\+MS}}~500
+\begin{DoxyCompactList}\small\item\em When piezo is moved, wait for DELAY\+\_\+\+PIEZO\+\_\+\+MOVED\+\_\+\+MS because it could be just a button press. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a9e1a2184797108f3fd67e0251343d960}{ATTENTION\+\_\+\+COOLDOWN\+\_\+\+MS}}~5000
+\begin{DoxyCompactList}\small\item\em Cooldown after which state attention is left again. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{defines_8h_a6b3c978dd2a7b246650bb233f2b8e942}{ALARM\+\_\+\+COOLDOWN\+\_\+\+MS}}~5000
+\begin{DoxyCompactList}\small\item\em Cooldown after which state alarm is left again. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-This file includes all important declarations and definitions.
+This file includes all important declarations and definitions. 
 
 \begin{DoxyAuthor}{Author}
 Lukas Krämer 
 \end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{defines_8h_a6b3c978dd2a7b246650bb233f2b8e942}\label{defines_8h_a6b3c978dd2a7b246650bb233f2b8e942} 
+\index{defines.h@{defines.h}!ALARM\_COOLDOWN\_MS@{ALARM\_COOLDOWN\_MS}}
+\index{ALARM\_COOLDOWN\_MS@{ALARM\_COOLDOWN\_MS}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{ALARM\_COOLDOWN\_MS}{ALARM\_COOLDOWN\_MS}}
+{\footnotesize\ttfamily \#define ALARM\+\_\+\+COOLDOWN\+\_\+\+MS~5000}
+
+
+
+Cooldown after which state alarm is left again. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00063}{63}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_a253c5c57ad2d67b9d8b6ddb553dde09a}\label{defines_8h_a253c5c57ad2d67b9d8b6ddb553dde09a} 
+\index{defines.h@{defines.h}!ALARM\_TOGGLE\_FREQ@{ALARM\_TOGGLE\_FREQ}}
+\index{ALARM\_TOGGLE\_FREQ@{ALARM\_TOGGLE\_FREQ}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{ALARM\_TOGGLE\_FREQ}{ALARM\_TOGGLE\_FREQ}}
+{\footnotesize\ttfamily \#define ALARM\+\_\+\+TOGGLE\+\_\+\+FREQ~20}
+
+
+
+Frequency for alarm. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00047}{47}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_a9e1a2184797108f3fd67e0251343d960}\label{defines_8h_a9e1a2184797108f3fd67e0251343d960} 
+\index{defines.h@{defines.h}!ATTENTION\_COOLDOWN\_MS@{ATTENTION\_COOLDOWN\_MS}}
+\index{ATTENTION\_COOLDOWN\_MS@{ATTENTION\_COOLDOWN\_MS}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{ATTENTION\_COOLDOWN\_MS}{ATTENTION\_COOLDOWN\_MS}}
+{\footnotesize\ttfamily \#define ATTENTION\+\_\+\+COOLDOWN\+\_\+\+MS~5000}
+
+
+
+Cooldown after which state attention is left again. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00058}{58}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_a28a3e5097d1f1cac1cd73737434760dc}\label{defines_8h_a28a3e5097d1f1cac1cd73737434760dc} 
+\index{defines.h@{defines.h}!CLOCK\_FREQ\_MHZ@{CLOCK\_FREQ\_MHZ}}
+\index{CLOCK\_FREQ\_MHZ@{CLOCK\_FREQ\_MHZ}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{CLOCK\_FREQ\_MHZ}{CLOCK\_FREQ\_MHZ}}
+{\footnotesize\ttfamily \#define CLOCK\+\_\+\+FREQ\+\_\+\+MHZ~1}
+
+
+
+Selected clock frequency in MHz. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00032}{32}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_ae8df221e4e5e1930a43fb7d2c3944665}\label{defines_8h_ae8df221e4e5e1930a43fb7d2c3944665} 
+\index{defines.h@{defines.h}!DELAY\_BUTTON\_DEBOUNCE\_MS@{DELAY\_BUTTON\_DEBOUNCE\_MS}}
+\index{DELAY\_BUTTON\_DEBOUNCE\_MS@{DELAY\_BUTTON\_DEBOUNCE\_MS}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{DELAY\_BUTTON\_DEBOUNCE\_MS}{DELAY\_BUTTON\_DEBOUNCE\_MS}}
+{\footnotesize\ttfamily \#define DELAY\+\_\+\+BUTTON\+\_\+\+DEBOUNCE\+\_\+\+MS~50}
+
+
+
+Button debounce delay. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00042}{42}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_a6cd671141c60a732c42f1ad79f1a5890}\label{defines_8h_a6cd671141c60a732c42f1ad79f1a5890} 
+\index{defines.h@{defines.h}!DELAY\_PIEZO\_MOVED\_MS@{DELAY\_PIEZO\_MOVED\_MS}}
+\index{DELAY\_PIEZO\_MOVED\_MS@{DELAY\_PIEZO\_MOVED\_MS}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{DELAY\_PIEZO\_MOVED\_MS}{DELAY\_PIEZO\_MOVED\_MS}}
+{\footnotesize\ttfamily \#define DELAY\+\_\+\+PIEZO\+\_\+\+MOVED\+\_\+\+MS~500}
+
+
+
+When piezo is moved, wait for DELAY\+\_\+\+PIEZO\+\_\+\+MOVED\+\_\+\+MS because it could be just a button press. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00053}{53}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_a3be8154d350ce65f5e6c1dfc284700af}\label{defines_8h_a3be8154d350ce65f5e6c1dfc284700af} 
+\index{defines.h@{defines.h}!PIN\_BUTTON@{PIN\_BUTTON}}
+\index{PIN\_BUTTON@{PIN\_BUTTON}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_BUTTON}{PIN\_BUTTON}}
+{\footnotesize\ttfamily \#define PIN\+\_\+\+BUTTON~2}
+
+
+
+Pin for the button. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00017}{17}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_a192ea8eaba652d29bfc08675edebb6a2}\label{defines_8h_a192ea8eaba652d29bfc08675edebb6a2} 
+\index{defines.h@{defines.h}!PIN\_BUZZER@{PIN\_BUZZER}}
+\index{PIN\_BUZZER@{PIN\_BUZZER}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_BUZZER}{PIN\_BUZZER}}
+{\footnotesize\ttfamily \#define PIN\+\_\+\+BUZZER~4}
+
+
+
+Pin for the button. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00027}{27}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_ae70934b3338990d4a3faecf2ee172d92}\label{defines_8h_ae70934b3338990d4a3faecf2ee172d92} 
+\index{defines.h@{defines.h}!PIN\_LED@{PIN\_LED}}
+\index{PIN\_LED@{PIN\_LED}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_LED}{PIN\_LED}}
+{\footnotesize\ttfamily \#define PIN\+\_\+\+LED~1}
+
+
+
+Pin for the LED. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00012}{12}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_ad67197684098f7e8191189a49b5198cd}\label{defines_8h_ad67197684098f7e8191189a49b5198cd} 
+\index{defines.h@{defines.h}!PIN\_PIEZO@{PIN\_PIEZO}}
+\index{PIN\_PIEZO@{PIN\_PIEZO}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_PIEZO}{PIN\_PIEZO}}
+{\footnotesize\ttfamily \#define PIN\+\_\+\+PIEZO~3}
+
+
+
+Pin for the piezo. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00022}{22}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+
+\Hypertarget{defines_8h_a5be5a63f189faba4da1c6f98d11310c6}\label{defines_8h_a5be5a63f189faba4da1c6f98d11310c6} 
+\index{defines.h@{defines.h}!THRESHOLD\_PIEZO@{THRESHOLD\_PIEZO}}
+\index{THRESHOLD\_PIEZO@{THRESHOLD\_PIEZO}!defines.h@{defines.h}}
+\doxysubsubsection{\texorpdfstring{THRESHOLD\_PIEZO}{THRESHOLD\_PIEZO}}
+{\footnotesize\ttfamily \#define THRESHOLD\+\_\+\+PIEZO~30}
+
+
+
+Threshold for piezo for movement detection. 
+
+
+
+Definition at line \mbox{\hyperlink{defines_8h_source_l00037}{37}} of file \mbox{\hyperlink{defines_8h_source}{defines.\+h}}.
+

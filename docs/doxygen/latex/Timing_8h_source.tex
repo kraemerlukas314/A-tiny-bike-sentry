@@ -1,0 +1,31 @@
+\doxysection{Timing.\+h}
+\hypertarget{Timing_8h_source}{}\label{Timing_8h_source}\index{src/main/Timing.h@{src/main/Timing.h}}
+\mbox{\hyperlink{Timing_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00001}00001\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ Timing.h}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Header\ file\ for\ Timing\ class.}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00005}00005\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @author\ Lukas\ Krämer}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00007}00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00011}00011\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00012}00012\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00013}00013\ \textcolor{comment}{\ *\ Timing\ class\ that\ provides\ corrected}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00014}00014\ \textcolor{comment}{\ *\ delay\ and\ millis\ functions\ based\ on\ selected\ clock\ frequency.}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00016}00016\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00017}\mbox{\hyperlink{classTiming}{00017}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTiming}{Timing}}\ \{}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00018}00018\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{classTiming}{Timing}}(\textcolor{keywordtype}{byte}\ clock\_freq\_mhz);}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTiming_abb7d84af8a72cb2ed3d49127f3c7700c}{wait\_ms}}(\textcolor{keywordtype}{long}\ d);}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classTiming_a4bd870e0808a4370f36e67f52172049e}{get\_millis}}();}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00023}00023\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00024}\mbox{\hyperlink{classTiming_a8548b450a4f251d106b2333d5eca8736}{00024}}\ \ \ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{classTiming_a8548b450a4f251d106b2333d5eca8736}{this\_clock\_freq\_mhz}};\ \ \textcolor{comment}{///<\ selected\ clock\ frequency}}
+\DoxyCodeLine{\Hypertarget{Timing_8h_source_l00025}00025\ \};}
+
+\end{DoxyCode}

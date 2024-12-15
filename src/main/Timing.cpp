@@ -24,7 +24,7 @@ Timing::Timing(byte clock_freq_mhz) {
 /**
  * Own delay function that counteracts different clock speeds.
  *
- * @param t delay time in ms
+ * @param duration delay time in ms
  */
 void Timing::wait_ms(long duration) {
     if (this_clock_freq_mhz == 1)

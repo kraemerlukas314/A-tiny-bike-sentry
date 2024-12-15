@@ -21,5 +21,5 @@ class Timing {
     long long get_millis();
 
    private:
-    byte this_clock_freq_mhz;
+    byte this_clock_freq_mhz;  ///< selected clock frequency
 };

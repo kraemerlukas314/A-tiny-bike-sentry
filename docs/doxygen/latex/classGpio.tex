@@ -1,0 +1,215 @@
+\doxysection{Gpio Class Reference}
+\hypertarget{classGpio}{}\label{classGpio}\index{Gpio@{Gpio}}
+
+
+\doxylink{classGpio}{Gpio} class that provides functions for direct hardware actions (e.\+g.  
+
+
+
+
+{\ttfamily \#include $<$Gpio.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGpio_a51a72b41aabb6df62d8cb35f1b35849a}{Gpio}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classTiming}{Timing} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGpio_a5bee528b0f527ee311016b90737b1a2e}{setup}} ()
+\begin{DoxyCompactList}\small\item\em GPIO setup function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGpio_a8e7d8257872d8e9768e79ee92ccad76f}{on}} (byte pin)
+\begin{DoxyCompactList}\small\item\em Turns on a pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGpio_aaa1d8c4c96c48c6635498dc265feb9f2}{off}} (byte pin)
+\begin{DoxyCompactList}\small\item\em Turns off a pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGpio_ad62c668ecc91f404fc7efc15833fecf8}{set\+\_\+pin}} (byte pin, bool state)
+\begin{DoxyCompactList}\small\item\em Sets pin to state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGpio_a0d660b06ca9c13b5171d19c33ddad8ad}{toggle}} (byte pin, int iterations, long d)
+\begin{DoxyCompactList}\small\item\em Function to toggle a digital pin on and off. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTiming}{Timing}} \mbox{\hyperlink{classGpio_ad864b345067519caba07b12ce9425f05}{timing}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classTiming}{Timing} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classGpio}{Gpio} class that provides functions for direct hardware actions (e.\+g. 
+
+turning on/off digital pins) 
+
+Definition at line \mbox{\hyperlink{Gpio_8h_source_l00019}{19}} of file \mbox{\hyperlink{Gpio_8h_source}{Gpio.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGpio_a51a72b41aabb6df62d8cb35f1b35849a}\label{classGpio_a51a72b41aabb6df62d8cb35f1b35849a} 
+\index{Gpio@{Gpio}!Gpio@{Gpio}}
+\index{Gpio@{Gpio}!Gpio@{Gpio}}
+\doxysubsubsection{\texorpdfstring{Gpio()}{Gpio()}}
+{\footnotesize\ttfamily Gpio\+::\+Gpio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{classTiming}{Timing} class. 
+
+
+
+Definition at line \mbox{\hyperlink{Gpio_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{Gpio_8cpp_source}{Gpio.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{defines_8h_source_l00027}{PIN\+\_\+\+BUZZER}}, and \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGpio_aaa1d8c4c96c48c6635498dc265feb9f2}\label{classGpio_aaa1d8c4c96c48c6635498dc265feb9f2} 
+\index{Gpio@{Gpio}!off@{off}}
+\index{off@{off}!Gpio@{Gpio}}
+\doxysubsubsection{\texorpdfstring{off()}{off()}}
+{\footnotesize\ttfamily void Gpio\+::off (\begin{DoxyParamCaption}\item[{byte}]{pin }\end{DoxyParamCaption})}
+
+
+
+Turns off a pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & pin to turn off \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Gpio_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{Gpio_8cpp_source}{Gpio.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{Animation_8cpp_source_l00062}{Animation\+::exit\+\_\+alarm()}}, and \mbox{\hyperlink{Animation_8cpp_source_l00046}{Animation\+::in\+\_\+sentry()}}.
+
+\Hypertarget{classGpio_a8e7d8257872d8e9768e79ee92ccad76f}\label{classGpio_a8e7d8257872d8e9768e79ee92ccad76f} 
+\index{Gpio@{Gpio}!on@{on}}
+\index{on@{on}!Gpio@{Gpio}}
+\doxysubsubsection{\texorpdfstring{on()}{on()}}
+{\footnotesize\ttfamily void Gpio\+::on (\begin{DoxyParamCaption}\item[{byte}]{pin }\end{DoxyParamCaption})}
+
+
+
+Turns on a pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & pin to turn on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Gpio_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{Gpio_8cpp_source}{Gpio.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{Animation_8cpp_source_l00054}{Animation\+::in\+\_\+attention()}}.
+
+\Hypertarget{classGpio_ad62c668ecc91f404fc7efc15833fecf8}\label{classGpio_ad62c668ecc91f404fc7efc15833fecf8} 
+\index{Gpio@{Gpio}!set\_pin@{set\_pin}}
+\index{set\_pin@{set\_pin}!Gpio@{Gpio}}
+\doxysubsubsection{\texorpdfstring{set\_pin()}{set\_pin()}}
+{\footnotesize\ttfamily void Gpio\+::set\+\_\+pin (\begin{DoxyParamCaption}\item[{byte}]{pin,  }\item[{bool}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets pin to state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & pin to set state \\
+\hline
+{\em state} & state to set (true/false) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Gpio_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{Gpio_8cpp_source}{Gpio.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{Animation_8cpp_source_l00071}{Animation\+::in\+\_\+alarm()}}.
+
+\Hypertarget{classGpio_a5bee528b0f527ee311016b90737b1a2e}\label{classGpio_a5bee528b0f527ee311016b90737b1a2e} 
+\index{Gpio@{Gpio}!setup@{setup}}
+\index{setup@{setup}!Gpio@{Gpio}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Gpio\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+GPIO setup function. 
+
+Sets all output pins as outputs. 
+
+Definition at line \mbox{\hyperlink{Gpio_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{Gpio_8cpp_source}{Gpio.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{defines_8h_source_l00027}{PIN\+\_\+\+BUZZER}}, and \mbox{\hyperlink{defines_8h_source_l00012}{PIN\+\_\+\+LED}}.
+
+
+
+Referenced by \mbox{\hyperlink{Animation_8cpp_source_l00021}{Animation\+::\+Animation()}}.
+
+\Hypertarget{classGpio_a0d660b06ca9c13b5171d19c33ddad8ad}\label{classGpio_a0d660b06ca9c13b5171d19c33ddad8ad} 
+\index{Gpio@{Gpio}!toggle@{toggle}}
+\index{toggle@{toggle}!Gpio@{Gpio}}
+\doxysubsubsection{\texorpdfstring{toggle()}{toggle()}}
+{\footnotesize\ttfamily void Gpio\+::toggle (\begin{DoxyParamCaption}\item[{byte}]{pin,  }\item[{int}]{iterations,  }\item[{long}]{d }\end{DoxyParamCaption})}
+
+
+
+Function to toggle a digital pin on and off. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & Pin to toggle on and off \\
+\hline
+{\em iterations} & How often should pin be toggled \\
+\hline
+{\em d} & delay between of/off states (d = 1 / frequency) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Gpio_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{Gpio_8cpp_source}{Gpio.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Gpio_8h_source_l00029}{timing}}, and \mbox{\hyperlink{Timing_8cpp_source_l00029}{Timing\+::wait\+\_\+ms()}}.
+
+
+
+Referenced by \mbox{\hyperlink{Animation_8cpp_source_l00038}{Animation\+::enter\+\_\+deep\+\_\+sleep()}}, and \mbox{\hyperlink{Animation_8cpp_source_l00030}{Animation\+::enter\+\_\+sentry()}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classGpio_ad864b345067519caba07b12ce9425f05}\label{classGpio_ad864b345067519caba07b12ce9425f05} 
+\index{Gpio@{Gpio}!timing@{timing}}
+\index{timing@{timing}!Gpio@{Gpio}}
+\doxysubsubsection{\texorpdfstring{timing}{timing}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTiming}{Timing}} Gpio\+::timing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{classTiming}{Timing} instance. 
+
+
+
+Definition at line \mbox{\hyperlink{Gpio_8h_source_l00029}{29}} of file \mbox{\hyperlink{Gpio_8h_source}{Gpio.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Gpio_8cpp_source_l00071}{toggle()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/main/\mbox{\hyperlink{Gpio_8h}{Gpio.\+h}}\item 
+src/main/\mbox{\hyperlink{Gpio_8cpp}{Gpio.\+cpp}}\end{DoxyCompactItemize}

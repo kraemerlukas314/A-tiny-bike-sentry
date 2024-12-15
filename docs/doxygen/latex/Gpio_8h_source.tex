@@ -1,0 +1,36 @@
+\doxysection{Gpio.\+h}
+\hypertarget{Gpio_8h_source}{}\label{Gpio_8h_source}\index{src/main/Gpio.h@{src/main/Gpio.h}}
+\mbox{\hyperlink{Gpio_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00001}00001\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ Gpio.h}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Header\ file\ for\ Gpio\ class}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00005}00005\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @author\ Lukas\ Krämer}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00007}00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Timing_8h}{Timing.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{defines_8h}{defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00013}00013\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00014}00014\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00015}00015\ \textcolor{comment}{\ *\ Gpio\ class\ that\ provides}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00016}00016\ \textcolor{comment}{\ *\ functions\ for\ direct\ hardware\ actions\ (e.g.\ turning\ on/off\ digital\ pins)}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00017}00017\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00018}00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00019}\mbox{\hyperlink{classGpio}{00019}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGpio}{Gpio}}\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00020}00020\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classGpio_a51a72b41aabb6df62d8cb35f1b35849a}{Gpio}}();}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_a5bee528b0f527ee311016b90737b1a2e}{setup}}();}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_a8e7d8257872d8e9768e79ee92ccad76f}{on}}(\textcolor{keywordtype}{byte}\ pin);}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_aaa1d8c4c96c48c6635498dc265feb9f2}{off}}(\textcolor{keywordtype}{byte}\ pin);}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_ad62c668ecc91f404fc7efc15833fecf8}{set\_pin}}(\textcolor{keywordtype}{byte}\ pin,\ \textcolor{keywordtype}{bool}\ state);}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_a0d660b06ca9c13b5171d19c33ddad8ad}{toggle}}(\textcolor{keywordtype}{byte}\ pin,\ \textcolor{keywordtype}{int}\ iterations,\ \textcolor{keywordtype}{long}\ d);}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00028}00028\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00029}\mbox{\hyperlink{classGpio_ad864b345067519caba07b12ce9425f05}{00029}}\ \ \ \ \ \mbox{\hyperlink{classTiming}{Timing}}\ \mbox{\hyperlink{classGpio_ad864b345067519caba07b12ce9425f05}{timing}};\ \ \textcolor{comment}{///<\ Timing\ instance}}
+\DoxyCodeLine{\Hypertarget{Gpio_8h_source_l00030}00030\ \};}
+
+\end{DoxyCode}

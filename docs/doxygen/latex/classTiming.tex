@@ -1,0 +1,136 @@
+\doxysection{Timing Class Reference}
+\hypertarget{classTiming}{}\label{classTiming}\index{Timing@{Timing}}
+
+
+\doxylink{classTiming}{Timing} class that provides corrected delay and millis functions based on selected clock frequency.  
+
+
+
+
+{\ttfamily \#include $<$Timing.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTiming_a6c28779c9664edd693795fd92892259a}{Timing}} (byte clock\+\_\+freq\+\_\+mhz)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classTiming}{Timing} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTiming_abb7d84af8a72cb2ed3d49127f3c7700c}{wait\+\_\+ms}} (long d)
+\begin{DoxyCompactList}\small\item\em Own delay function that counteracts different clock speeds. \end{DoxyCompactList}\item 
+long long \mbox{\hyperlink{classTiming_a4bd870e0808a4370f36e67f52172049e}{get\+\_\+millis}} ()
+\begin{DoxyCompactList}\small\item\em Own millis function that counteracts different clock speeds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+byte \mbox{\hyperlink{classTiming_a8548b450a4f251d106b2333d5eca8736}{this\+\_\+clock\+\_\+freq\+\_\+mhz}}
+\begin{DoxyCompactList}\small\item\em selected clock frequency \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classTiming}{Timing} class that provides corrected delay and millis functions based on selected clock frequency. 
+
+Definition at line \mbox{\hyperlink{Timing_8h_source_l00017}{17}} of file \mbox{\hyperlink{Timing_8h_source}{Timing.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTiming_a6c28779c9664edd693795fd92892259a}\label{classTiming_a6c28779c9664edd693795fd92892259a} 
+\index{Timing@{Timing}!Timing@{Timing}}
+\index{Timing@{Timing}!Timing@{Timing}}
+\doxysubsubsection{\texorpdfstring{Timing()}{Timing()}}
+{\footnotesize\ttfamily Timing\+::\+Timing (\begin{DoxyParamCaption}\item[{byte}]{clock\+\_\+freq\+\_\+mhz }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{classTiming}{Timing} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clock\+\_\+freq\+\_\+mhz} & selected clock frequency. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Timing_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{Timing_8cpp_source}{Timing.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Timing_8h_source_l00024}{this\+\_\+clock\+\_\+freq\+\_\+mhz}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTiming_a4bd870e0808a4370f36e67f52172049e}\label{classTiming_a4bd870e0808a4370f36e67f52172049e} 
+\index{Timing@{Timing}!get\_millis@{get\_millis}}
+\index{get\_millis@{get\_millis}!Timing@{Timing}}
+\doxysubsubsection{\texorpdfstring{get\_millis()}{get\_millis()}}
+{\footnotesize\ttfamily long long Timing\+::get\+\_\+millis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Own millis function that counteracts different clock speeds. 
+
+\begin{DoxyReturn}{Returns}
+long millis since ATtiny restart 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Timing_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{Timing_8cpp_source}{Timing.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Timing_8h_source_l00024}{this\+\_\+clock\+\_\+freq\+\_\+mhz}}.
+
+\Hypertarget{classTiming_abb7d84af8a72cb2ed3d49127f3c7700c}\label{classTiming_abb7d84af8a72cb2ed3d49127f3c7700c} 
+\index{Timing@{Timing}!wait\_ms@{wait\_ms}}
+\index{wait\_ms@{wait\_ms}!Timing@{Timing}}
+\doxysubsubsection{\texorpdfstring{wait\_ms()}{wait\_ms()}}
+{\footnotesize\ttfamily void Timing\+::wait\+\_\+ms (\begin{DoxyParamCaption}\item[{long}]{duration }\end{DoxyParamCaption})}
+
+
+
+Own delay function that counteracts different clock speeds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & delay time in ms \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Timing_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{Timing_8cpp_source}{Timing.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Timing_8h_source_l00024}{this\+\_\+clock\+\_\+freq\+\_\+mhz}}.
+
+
+
+Referenced by \mbox{\hyperlink{Gpio_8cpp_source_l00071}{Gpio\+::toggle()}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classTiming_a8548b450a4f251d106b2333d5eca8736}\label{classTiming_a8548b450a4f251d106b2333d5eca8736} 
+\index{Timing@{Timing}!this\_clock\_freq\_mhz@{this\_clock\_freq\_mhz}}
+\index{this\_clock\_freq\_mhz@{this\_clock\_freq\_mhz}!Timing@{Timing}}
+\doxysubsubsection{\texorpdfstring{this\_clock\_freq\_mhz}{this\_clock\_freq\_mhz}}
+{\footnotesize\ttfamily byte Timing\+::this\+\_\+clock\+\_\+freq\+\_\+mhz\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+selected clock frequency 
+
+
+
+Definition at line \mbox{\hyperlink{Timing_8h_source_l00024}{24}} of file \mbox{\hyperlink{Timing_8h_source}{Timing.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Timing_8cpp_source_l00043}{get\+\_\+millis()}}, \mbox{\hyperlink{Timing_8cpp_source_l00020}{Timing()}}, and \mbox{\hyperlink{Timing_8cpp_source_l00029}{wait\+\_\+ms()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/main/\mbox{\hyperlink{Timing_8h}{Timing.\+h}}\item 
+src/main/\mbox{\hyperlink{Timing_8cpp}{Timing.\+cpp}}\end{DoxyCompactItemize}

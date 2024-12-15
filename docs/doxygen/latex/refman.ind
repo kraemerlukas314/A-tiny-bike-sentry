@@ -1,0 +1,137 @@
+\begin{theindex}
+
+  \item {ALARM\_COOLDOWN\_MS}
+    \subitem {defines.h}, \hyperpage{18}
+  \item {ALARM\_TOGGLE\_FREQ}
+    \subitem {defines.h}, \hyperpage{18}
+  \item {Animation}, \hyperpage{5}
+    \subitem {Animation}, \hyperpage{6}
+    \subitem {enter\_deep\_sleep}, \hyperpage{6}
+    \subitem {enter\_sentry}, \hyperpage{6}
+    \subitem {exit\_alarm}, \hyperpage{6}
+    \subitem {gpio}, \hyperpage{7}
+    \subitem {in\_alarm}, \hyperpage{6}
+    \subitem {in\_attention}, \hyperpage{7}
+    \subitem {in\_sentry}, \hyperpage{7}
+    \subitem {led\_state}, \hyperpage{7}
+    \subitem {timing}, \hyperpage{7}
+  \item {ATTENTION\_COOLDOWN\_MS}
+    \subitem {defines.h}, \hyperpage{18}
+
+  \indexspace
+
+  \item {CLOCK\_FREQ\_MHZ}
+    \subitem {defines.h}, \hyperpage{18}
+
+  \indexspace
+
+  \item {defines.h}
+    \subitem {ALARM\_COOLDOWN\_MS}, \hyperpage{18}
+    \subitem {ALARM\_TOGGLE\_FREQ}, \hyperpage{18}
+    \subitem {ATTENTION\_COOLDOWN\_MS}, \hyperpage{18}
+    \subitem {CLOCK\_FREQ\_MHZ}, \hyperpage{18}
+    \subitem {DELAY\_BUTTON\_DEBOUNCE\_MS}, \hyperpage{19}
+    \subitem {DELAY\_PIEZO\_MOVED\_MS}, \hyperpage{19}
+    \subitem {PIN\_BUTTON}, \hyperpage{19}
+    \subitem {PIN\_BUZZER}, \hyperpage{19}
+    \subitem {PIN\_LED}, \hyperpage{19}
+    \subitem {PIN\_PIEZO}, \hyperpage{19}
+    \subitem {THRESHOLD\_PIEZO}, \hyperpage{20}
+  \item {DELAY\_BUTTON\_DEBOUNCE\_MS}
+    \subitem {defines.h}, \hyperpage{19}
+  \item {DELAY\_PIEZO\_MOVED\_MS}
+    \subitem {defines.h}, \hyperpage{19}
+
+  \indexspace
+
+  \item {enter\_deep\_sleep}
+    \subitem {Animation}, \hyperpage{6}
+  \item {enter\_sentry}
+    \subitem {Animation}, \hyperpage{6}
+  \item {exit\_alarm}
+    \subitem {Animation}, \hyperpage{6}
+
+  \indexspace
+
+  \item {get\_millis}
+    \subitem {Timing}, \hyperpage{13}
+  \item {Gpio}, \hyperpage{8}
+    \subitem {Gpio}, \hyperpage{9}
+    \subitem {off}, \hyperpage{9}
+    \subitem {on}, \hyperpage{9}
+    \subitem {set\_pin}, \hyperpage{9}
+    \subitem {setup}, \hyperpage{11}
+    \subitem {timing}, \hyperpage{11}
+    \subitem {toggle}, \hyperpage{11}
+  \item {gpio}
+    \subitem {Animation}, \hyperpage{7}
+
+  \indexspace
+
+  \item {in\_alarm}
+    \subitem {Animation}, \hyperpage{6}
+  \item {in\_attention}
+    \subitem {Animation}, \hyperpage{7}
+  \item {in\_sentry}
+    \subitem {Animation}, \hyperpage{7}
+
+  \indexspace
+
+  \item {led\_state}
+    \subitem {Animation}, \hyperpage{7}
+
+  \indexspace
+
+  \item {off}
+    \subitem {Gpio}, \hyperpage{9}
+  \item {on}
+    \subitem {Gpio}, \hyperpage{9}
+
+  \indexspace
+
+  \item {PIN\_BUTTON}
+    \subitem {defines.h}, \hyperpage{19}
+  \item {PIN\_BUZZER}
+    \subitem {defines.h}, \hyperpage{19}
+  \item {PIN\_LED}
+    \subitem {defines.h}, \hyperpage{19}
+  \item {PIN\_PIEZO}
+    \subitem {defines.h}, \hyperpage{19}
+
+  \indexspace
+
+  \item {set\_pin}
+    \subitem {Gpio}, \hyperpage{9}
+  \item {setup}
+    \subitem {Gpio}, \hyperpage{11}
+  \item {src/main/Animation.cpp}, \hyperpage{15}
+  \item {src/main/Animation.h}, \hyperpage{16, 17}
+  \item {src/main/defines.h}, \hyperpage{17}, \hyperpage{20}
+  \item {src/main/Gpio.cpp}, \hyperpage{21}
+  \item {src/main/Gpio.h}, \hyperpage{22, 23}
+  \item {src/main/Timing.cpp}, \hyperpage{23, 24}
+  \item {src/main/Timing.h}, \hyperpage{24, 25}
+
+  \indexspace
+
+  \item {this\_clock\_freq\_mhz}
+    \subitem {Timing}, \hyperpage{13}
+  \item {THRESHOLD\_PIEZO}
+    \subitem {defines.h}, \hyperpage{20}
+  \item {Timing}, \hyperpage{12}
+    \subitem {get\_millis}, \hyperpage{13}
+    \subitem {this\_clock\_freq\_mhz}, \hyperpage{13}
+    \subitem {Timing}, \hyperpage{12}
+    \subitem {wait\_ms}, \hyperpage{13}
+  \item {timing}
+    \subitem {Animation}, \hyperpage{7}
+    \subitem {Gpio}, \hyperpage{11}
+  \item {toggle}
+    \subitem {Gpio}, \hyperpage{11}
+
+  \indexspace
+
+  \item {wait\_ms}
+    \subitem {Timing}, \hyperpage{13}
+
+\end{theindex}

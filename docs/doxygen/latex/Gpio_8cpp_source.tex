@@ -1,0 +1,84 @@
+\doxysection{Gpio.\+cpp}
+\hypertarget{Gpio_8cpp_source}{}\label{Gpio_8cpp_source}\index{src/main/Gpio.cpp@{src/main/Gpio.cpp}}
+\mbox{\hyperlink{Gpio_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00001}00001\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ Gpio.cpp}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00004}00004\ \textcolor{comment}{\ *\ Cpp\ file\ for\ Gpio\ class\ that\ provides}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00005}00005\ \textcolor{comment}{\ *\ functions\ for\ direct\ hardware\ actions\ (e.g.\ turning\ on/off\ digital\ pins)}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00007}00007\ \textcolor{comment}{\ *\ @author\ Lukas\ Krämer}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00008}00008\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Gpio_8h}{Gpio.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Timing_8h}{Timing.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{defines_8h}{defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00016}00016\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00017}00017\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00018}00018\ \textcolor{comment}{\ *\ Constructor\ for\ Timing\ class.}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00020}00020\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00021}\mbox{\hyperlink{classGpio_a51a72b41aabb6df62d8cb35f1b35849a}{00021}}\ \mbox{\hyperlink{classGpio_a51a72b41aabb6df62d8cb35f1b35849a}{Gpio::Gpio}}()\ :\ timing(\mbox{\hyperlink{defines_8h_a28a3e5097d1f1cac1cd73737434760dc}{CLOCK\_FREQ\_MHZ}})\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00022}00022\ \ \ \ \ pinMode(\mbox{\hyperlink{defines_8h_ae70934b3338990d4a3faecf2ee172d92}{PIN\_LED}},\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00023}00023\ \ \ \ \ pinMode(\mbox{\hyperlink{defines_8h_a192ea8eaba652d29bfc08675edebb6a2}{PIN\_BUZZER}},\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00025}00025\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00026}00026\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00027}00027\ \textcolor{comment}{\ *\ GPIO\ setup\ function.}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00028}00028\ \textcolor{comment}{\ *\ Sets\ all\ output\ pins\ as\ outputs.}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00029}00029\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00031}\mbox{\hyperlink{classGpio_a5bee528b0f527ee311016b90737b1a2e}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_a5bee528b0f527ee311016b90737b1a2e}{Gpio::setup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00032}00032\ \ \ \ \ pinMode(\mbox{\hyperlink{defines_8h_ae70934b3338990d4a3faecf2ee172d92}{PIN\_LED}},\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00033}00033\ \ \ \ \ pinMode(\mbox{\hyperlink{defines_8h_a192ea8eaba652d29bfc08675edebb6a2}{PIN\_BUZZER}},\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00035}00035\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00036}00036\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00037}00037\ \textcolor{comment}{\ *\ Turns\ on\ a\ pin.}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00038}00038\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00039}00039\ \textcolor{comment}{\ *\ @param\ pin\ pin\ to\ turn\ on}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00040}00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00041}\mbox{\hyperlink{classGpio_a8e7d8257872d8e9768e79ee92ccad76f}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_a8e7d8257872d8e9768e79ee92ccad76f}{Gpio::on}}(\textcolor{keywordtype}{byte}\ pin)\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00042}00042\ \ \ \ \ digitalWrite(pin,\ HIGH);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00044}00044\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00045}00045\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00046}00046\ \textcolor{comment}{\ *\ Turns\ off\ a\ pin.}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00047}00047\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00048}00048\ \textcolor{comment}{\ *\ @param\ pin\ pin\ to\ turn\ off}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00049}00049\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00050}\mbox{\hyperlink{classGpio_aaa1d8c4c96c48c6635498dc265feb9f2}{00050}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_aaa1d8c4c96c48c6635498dc265feb9f2}{Gpio::off}}(\textcolor{keywordtype}{byte}\ pin)\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00051}00051\ \ \ \ \ digitalWrite(pin,\ LOW);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00053}00053\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00054}00054\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00055}00055\ \textcolor{comment}{\ *\ Sets\ pin\ to\ state.}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00056}00056\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00057}00057\ \textcolor{comment}{\ *\ @param\ pin\ pin\ to\ set\ state}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00058}00058\ \textcolor{comment}{\ *\ @param\ state\ state\ to\ set\ (true/false)}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00059}00059\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00060}\mbox{\hyperlink{classGpio_ad62c668ecc91f404fc7efc15833fecf8}{00060}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_ad62c668ecc91f404fc7efc15833fecf8}{Gpio::set\_pin}}(\textcolor{keywordtype}{byte}\ pin,\ \textcolor{keywordtype}{bool}\ state)\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00061}00061\ \ \ \ \ digitalWrite(pin,\ state);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00063}00063\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00064}00064\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00065}00065\ \textcolor{comment}{\ *\ Function\ to\ toggle\ a\ digital\ pin\ on\ and\ off.}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00066}00066\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00067}00067\ \textcolor{comment}{\ *\ @param\ pin\ Pin\ to\ toggle\ on\ and\ off}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00068}00068\ \textcolor{comment}{\ *\ @param\ iterations\ How\ often\ should\ pin\ be\ toggled}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00069}00069\ \textcolor{comment}{\ *\ @param\ d\ delay\ between\ of/off\ states\ (d\ =\ 1\ /\ frequency)}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00070}00070\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00071}\mbox{\hyperlink{classGpio_a0d660b06ca9c13b5171d19c33ddad8ad}{00071}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGpio_a0d660b06ca9c13b5171d19c33ddad8ad}{Gpio::toggle}}(\textcolor{keywordtype}{byte}\ pin,\ \textcolor{keywordtype}{int}\ iterations,\ \textcolor{keywordtype}{long}\ d)\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ iterations;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ digitalWrite(pin,\ HIGH);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGpio_ad864b345067519caba07b12ce9425f05}{timing}}.\mbox{\hyperlink{classTiming_abb7d84af8a72cb2ed3d49127f3c7700c}{wait\_ms}}(d);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ digitalWrite(pin,\ LOW);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGpio_ad864b345067519caba07b12ce9425f05}{timing}}.\mbox{\hyperlink{classTiming_abb7d84af8a72cb2ed3d49127f3c7700c}{wait\_ms}}(d);}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Gpio_8cpp_source_l00078}00078\ \}}
+
+\end{DoxyCode}

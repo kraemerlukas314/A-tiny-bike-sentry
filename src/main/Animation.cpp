@@ -17,8 +17,6 @@
 
 /**
  * Constructor for Animation class.
- *
- * @param clock_freq_mhz selected clock frequency.
  */
 Animation::Animation() : timing(CLOCK_FREQ_MHZ), gpio() {
     gpio.setup();
