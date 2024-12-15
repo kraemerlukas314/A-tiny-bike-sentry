@@ -21,9 +21,7 @@
 #include "Timing.h"
 #include "defines.h"
 
-/**
-   Enum to store current program state.
-*/
+/// Enum to store current program state
 enum State {
     DEEP_SLEEP,
     SENTRY,
@@ -112,7 +110,6 @@ void configure_button_interrupt() {
 
 /**
    Interrupt routine for waking from sleep on button press.
-
 */
 ISR(PCINT0_vect) {
     // Handle button press interrupt
@@ -123,7 +120,6 @@ ISR(PCINT0_vect) {
 
 /**
    Configures a watchdog timer with a timeout of four seconds.
-
 */
 void configure_watchdog() {
     cli();  // Disable interrupts
@@ -135,7 +131,6 @@ void configure_watchdog() {
 
 /**
    Enables the watchdog timer with a timeout of four seconds.
-
 */
 void enable_watchdog() {
     cli();

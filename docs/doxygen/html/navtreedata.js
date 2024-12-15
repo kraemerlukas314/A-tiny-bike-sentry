@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "ATtiny bike sentry", "index.html", [
+  [ "A tiny bike sentry", "index.html", [
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Fields", "functions.html", [
