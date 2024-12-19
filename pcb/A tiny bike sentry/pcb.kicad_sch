@@ -1352,6 +1352,12 @@
 		(uuid "7eee9f1b-0022-4de4-bfff-8fef3f58b5dd")
 	)
 	(junction
+		(at 147.32 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ae2254e4-cc8f-4e26-9788-d06765c27006")
+	)
+	(junction
 		(at 147.32 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1716,6 +1722,16 @@
 			(type default)
 		)
 		(uuid "e147aa81-e0ff-491e-90d1-83f74e9e7932")
+	)
+	(wire
+		(pts
+			(xy 147.32 57.15) (xy 147.32 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e272b3f7-9eb0-4923-9dae-3ea33885952f")
 	)
 	(wire
 		(pts
@@ -2187,73 +2203,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 163.83 66.04 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4fdcc7fd-22f5-4757-8bdc-4ae2db9947d9")
-		(property "Reference" "#PWR08"
-			(at 170.18 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 167.64 66.0399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 163.83 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 163.83 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 163.83 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a4194a83-00ee-4726-b9dc-8d361a5cf51b")
-		)
-		(instances
-			(project "pcb"
-				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
-					(reference "#PWR08")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "MCU_Microchip_ATtiny:ATtiny85-20P")
 		(at 130.81 83.82 0)
 		(unit 1)
@@ -2543,6 +2492,75 @@
 			(project "pcb"
 				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 147.32 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6b05abfc-7069-4d64-9c22-edf67430bdca")
+		(property "Reference" "R4"
+			(at 147.4909 63.6938 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 145.288 64.008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 145.542 62.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 147.32 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 147.32 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c66202e8-e5a3-4dda-80e7-cd6cb06647c4")
+		)
+		(pin "2"
+			(uuid "274e4b0e-3fce-43a9-9bb5-1b0683487149")
+		)
+		(instances
+			(project "pcb"
+				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -2886,6 +2904,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 147.32 57.15 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d725d31c-de9d-4894-a18d-0ed8c1a011dd")
+		(property "Reference" "#PWR08"
+			(at 147.32 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 147.32 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 147.32 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 147.32 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "81f95603-3681-404d-9b90-baabe0d31bde")
+		)
+		(instances
+			(project "pcb"
+				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 162.56 104.14 180)
 		(unit 1)
@@ -2949,6 +3033,72 @@
 			(project "pcb"
 				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
 					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 163.83 66.04 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f42a6db0-dc62-484a-9674-e0088ed6484a")
+		(property "Reference" "#PWR09"
+			(at 160.02 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 168.91 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 163.83 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c50e4a0d-482b-4b7b-bcfb-b10a407b2621")
+		)
+		(instances
+			(project "pcb"
+				(path "/ac384b63-63a8-4a7a-8e95-96ebce3e1434"
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
