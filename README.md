@@ -1,10 +1,10 @@
 # A Tiny Bike Sentry
 
-[🇩🇪 Deutsch](#deutsch) | [🇬🇧 English](#english)
+[🇩🇪 Deutsch](#-deutsch) | [🇬🇧 English](#-english)
 
 ---
 
-## 🇩🇪 Deutsch
+## 📌 Deutsch
 
 ### Überblick
 A Tiny Bike Sentry ist ein elektronisches Fahrradschloss, das bei Erschütterungen einen optischen und akustischen Alarm auslöst, um Diebstähle zu verhindern. Es basiert auf einem stromsparenden ATtiny85-Mikrocontroller und verwendet eine LED, einen Buzzer, einen Taster und einen Erschütterungssensor.
@@ -69,7 +69,7 @@ Dieses Projekt steht unter der **MIT-Lizenz** – freie Nutzung und Modifikation
 
 ---
 
-## 🇬🇧 English
+## 📌 English
 
 ### Overview
 A Tiny Bike Sentry is an electronic bike lock that triggers an optical and acoustic alarm when vibrations are detected, helping to prevent theft. It is based on a low-power ATtiny85 microcontroller and uses an LED, a buzzer, a button, and a vibration sensor.
