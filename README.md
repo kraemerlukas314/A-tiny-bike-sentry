@@ -24,11 +24,11 @@ A Tiny Bike Sentry ist ein elektronisches Fahrradschloss, das bei Erschütterung
 ### Software
 Die Software wurde in **C++** geschrieben und basiert auf einer **zustandsbasierten Programmierung**.
 Wichtige Dateien:
-- `main.ino`: Hauptprogramm mit der Zustandsmaschine
-- `Gpio.h / Gpio.cpp`: Steuerung der Hardware-Pins
-- `Animation.h / Animation.cpp`: Verwaltung der LED- und Buzzer-Signale
-- `Timing.h / Timing.cpp`: Optimierung der Zeitsteuerung
-- `defines.h`: Konfigurationsdatei mit Schwellenwerten & Pin-Belegung
+- [`main.ino`](src/main/main.ino): Hauptprogramm mit der Zustandsmaschine
+- [`Gpio.h`](src/main/Gpio.h) / [`Gpio.cpp`](src/main/Gpio.cpp): Steuerung der Hardware-Pins
+- [`Animation.h`](src/main/Animation.h) / [`Animation.cpp`](src/main/Animation.cpp): Verwaltung der LED- und Buzzer-Signale
+- [`Timing.h`](src/main/Timing.h) / [`Timing.cpp`](src/main/Timing.cpp): Optimierung der Zeitsteuerung
+- [`defines.h`](src/main/defines.h): Konfigurationsdatei mit Schwellenwerten & Pin-Belegung
 
 ### Zustandsdiagramm
 Das System arbeitet mit einer **Finite State Machine**:
@@ -38,7 +38,7 @@ Das System arbeitet mit einer **Finite State Machine**:
 - **Alarm**: Vollständiger Alarmmodus
 - **Cooldown**: Nach einer bestimmten Zeit ohne weitere Bewegung geht das System zurück in den Sentry-Modus
 
-(Siehe `docs/final pdfs/State Machine Graph.pdf` für visuelle Darstellung)
+(Siehe [`State Machine Graph.pdf`](docs/final%20pdfs/State%20Machine%20Graph.pdf) für visuelle Darstellung)
 
 ### Installation & Nutzung
 #### Voraussetzungen
@@ -54,10 +54,10 @@ Das System arbeitet mit einer **Finite State Machine**:
 
 ### Dokumentation
 Detaillierte Informationen zur Implementierung sind in folgenden Dateien enthalten:
-- `Benutzerdokumentation.pdf`: Anleitung für Endnutzer
-- `Entwicklerdokumentation.pdf`: Technische Details & Implementierung
-- `Doxygen refman.pdf`: Generierte Code-Dokumentation
-- `Präsentation.pdf`: Überblick und Projektvorstellung
+- [`Benutzerdokumentation.pdf`](docs/final%20pdfs/A%20tiny%20bike%20sentry%20-%20Benutzerdokumentation.pdf): Anleitung für Endnutzer
+- [`Entwicklerdokumentation.pdf`](docs/final%20pdfs/A%20tiny%20bike%20sentry%20-%20Entwicklerdokumentation.pdf): Technische Details & Implementierung
+- [`Doxygen refman.pdf`](docs/final%20pdfs/Doxygen%20refman.pdf): Generierte Code-Dokumentation
+- [`Präsentation.pdf`](docs/final%20pdfs/A%20tiny%20bike%20sentry%20-%20Präsentation.pdf): Überblick und Projektvorstellung
 
 ### Weiterentwicklung
 - Implementierung eines **Bluetooth-Moduls** zur Fernsteuerung
@@ -89,11 +89,11 @@ A Tiny Bike Sentry is an electronic bike lock that triggers an optical and acous
 ### Software
 The software is written in **C++** and is based on a **state-based programming** approach.
 Key files:
-- `main.ino`: Main program with the state machine
-- `Gpio.h / Gpio.cpp`: Controls hardware pins
-- `Animation.h / Animation.cpp`: Manages LED and buzzer signals
-- `Timing.h / Timing.cpp`: Optimizes time control
-- `defines.h`: Configuration file with thresholds & pin assignments
+- [`main.ino`](src/main/main.ino): Main program with the state machine
+- [`Gpio.h`](src/main/Gpio.h) / [`Gpio.cpp`](src/main/Gpio.cpp): Controls hardware pins
+- [`Animation.h`](src/main/Animation.h) / [`Animation.cpp`](src/main/Animation.cpp): Manages LED and buzzer signals
+- [`Timing.h`](src/main/Timing.h) / [`Timing.cpp`](src/main/Timing.cpp): Optimizes time control
+- [`defines.h`](src/main/defines.h): Configuration file with thresholds & pin assignments
 
 ### State Diagram
 The system operates with a **Finite State Machine**:
@@ -103,7 +103,7 @@ The system operates with a **Finite State Machine**:
 - **Alarm**: Full alarm mode
 - **Cooldown**: After a certain time without further movement, the system returns to the Sentry mode
 
-(See `docs/final pdfs/State Machine Graph.pdf` for a visual representation)
+(See [`State Machine Graph.pdf`](docs/final%20pdfs/State%20Machine%20Graph.pdf) for a visual representation)
 
 ### Installation & Usage
 #### Requirements
@@ -119,15 +119,10 @@ The system operates with a **Finite State Machine**:
 
 ### Documentation
 Detailed implementation information can be found in the following files:
-- `Benutzerdokumentation.pdf`: User manual
-- `Entwicklerdokumentation.pdf`: Technical details & implementation
-- `Doxygen refman.pdf`: Generated code documentation
-- `Präsentation.pdf`: Overview and project presentation
-
-### Future Improvements
-- **Bluetooth module** for remote control
-- **Battery-powered operation with charging circuit** for more flexibility
-- **Advanced security mechanisms** (e.g., code entry or smartphone authentication)
+- [`Benutzerdokumentation.pdf`](docs/final%20pdfs/A%20tiny%20bike%20sentry%20-%20Benutzerdokumentation.pdf): User manual
+- [`Entwicklerdokumentation.pdf`](docs/final%20pdfs/A%20tiny%20bike%20sentry%20-%20Entwicklerdokumentation.pdf): Technical details & implementation
+- [`Doxygen refman.pdf`](docs/final%20pdfs/Doxygen%20refman.pdf): Generated code documentation
+- [`Präsentation.pdf`](docs/final%20pdfs/A%20tiny%20bike%20sentry%20-%20Präsentation.pdf): Overview and project presentation
 
 ### License
 This project is released under the **MIT License** – free to use and modify.
@@ -136,3 +131,4 @@ This project is released under the **MIT License** – free to use and modify.
 
 **Project by Lukas Krämer | Winter Semester 2024**  
 [GitHub Repository](https://github.com/kraemerlukas314/A-tiny-bike-sentry)
+
