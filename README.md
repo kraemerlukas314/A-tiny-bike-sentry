@@ -38,7 +38,7 @@ Das System arbeitet mit einer **Finite State Machine**:
 - **Alarm**: Vollständiger Alarmmodus
 - **Cooldown**: Nach einer bestimmten Zeit ohne weitere Bewegung geht das System zurück in den Sentry-Modus
 
-(Siehe `State Machine Graph.pdf` für visuelle Darstellung)
+(Siehe `docs/final pdfs/State Machine Graph.pdf` für visuelle Darstellung)
 
 ### Installation & Nutzung
 #### Voraussetzungen
@@ -103,7 +103,7 @@ The system operates with a **Finite State Machine**:
 - **Alarm**: Full alarm mode
 - **Cooldown**: After a certain time without further movement, the system returns to the Sentry mode
 
-(See `State Machine Graph.pdf` for a visual representation)
+(See `docs/final pdfs/State Machine Graph.pdf` for a visual representation)
 
 ### Installation & Usage
 #### Requirements
