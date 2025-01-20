@@ -34,7 +34,7 @@
 /**
  * @brief Threshold for piezo for movement detection.
  */
-#define THRESHOLD_PIEZO 30
+#define THRESHOLD_PIEZO 5
 
 /**
  * @brief Button debounce delay.
@@ -55,9 +55,9 @@
 /**
  * @brief Cooldown after which state attention is left again.
  */
-#define ATTENTION_COOLDOWN_MS 5000
+#define ATTENTION_COOLDOWN_MS 10000
 
 /**
  * @brief Cooldown after which state alarm is left again.
  */
-#define ALARM_COOLDOWN_MS 5000
+#define ALARM_COOLDOWN_MS 10000
